@@ -13,7 +13,7 @@ int main()
 	v2[6] = 1;	
 	v1 = v1 + v2;
 	v1.write(std::cout);*/
-	Vector_t<Persona> persona;
+	/*Vector_t<Persona> persona;
 
 	Persona pedro, manuel, raquel;
 	pedro.name_ = "Pedro";
@@ -29,5 +29,15 @@ int main()
 
 	std::cout << persona.get_size();
 		for(int i = 0; i < persona.get_size(); i++)
-			persona[i].write(std::cout);
+			persona[i].write(std::cout);*/
+	List_t<Node_t<int>> lista;
+	Node_t<int>* nodito;
+	lista.insert_head(nodito);
+
+	//for (int i = 0; i < 3; i++)
+	{
+		
+		//lista.insert_head(Node_t<int> nodito);
+	}
+
 }
