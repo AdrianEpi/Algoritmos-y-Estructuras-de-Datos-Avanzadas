@@ -2,11 +2,21 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:45
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-03 17:16:30
+* @Last Modified time: 2020-03-04 18:02:06
 */
 #include "../include/celula.hpp"
 
 
+/**
+ * @brief      Constructs a new instance.
+ *
+ * @param[in]  i     position i
+ * @param[in]  j     position j
+ */
+Celula::Celula(int i, int j)
+{
+	set_Posicion(i, j);
+}
 
 /**
  * @brief      Gets the estado.
@@ -19,33 +29,13 @@ int Celula::get_Estado(void) const
 }
 
 /**
- * @brief      Gets i.
+ * @brief      Gets the posicion.
  *
- * @return     I.
+ * @return     The posicion.
  */
-int Celula::get_I(void)
+std::pair<int, int> Celula::get_Posicion(void)
 {
-	return i_;
-}
-
-/**
- * @brief      Gets the j.
- *
- * @return     The j.
- */
-int Celula::get_J(void)
-{
-	return j_;
-}
-
-/**
- * @brief      Gets the siguiente estado.
- *
- * @return     The siguiente estado.
- */
-int Celula::get_SiguienteEstado(void)
-{
-	return siguiente_estado_;
+	return posicion_;
 }
 
 /**
@@ -59,33 +49,24 @@ void Celula::set_Estado(int estado)
 }
 
 /**
- * @brief      Sets i.
+ * @brief      Sets the posicion.
+ *
+ * @param[in]  pos   The new value
+ */
+void Celula::set_Posicion(std::pair<int, int> pos)
+{
+	posicion_ = pos;
+}
+
+/**
+ * @brief      Sets the posicion.
  *
  * @param[in]  i     The new value
- */
-void Celula::set_I(int i)
-{
-	i_ = i;
-}
-
-/**
- * @brief      Sets the j.
- *
  * @param[in]  j     The new value
  */
-void Celula::set_J(int j)
+void Celula::set_Posicion(int i, int j)
 {
-	j_ = j;
-}
-
-/**
- * @brief      Sets the siguiente estado.
- *
- * @param[in]  siguiente_estado  The siguiente estado
- */
-void Celula::set_SiguienteEstado(int siguiente_estado)
-{
-	siguiente_estado_ = siguiente_estado;
+	posicion_ = std::make_pair(i, j);
 }
 
 /**
@@ -98,4 +79,22 @@ void Celula::set_SiguienteEstado(int siguiente_estado)
 Celula Celula::operator=(int estado)
 {
 	estado_ = estado;
+	return *this;
+}
+
+/**
+ * @brief      Bitwise left shift operator.
+ *
+ * @param      cout  The cout
+ *
+ * @return     The result of the bitwise left shift
+ */
+std::ostream& Celula::operator<<(std::ostream& cout, const Celula cel)
+{
+	if(cel.get_Estado() == 0)
+		cout << 0;
+	else
+		cout << 'X';
+
+	return cout;
 }

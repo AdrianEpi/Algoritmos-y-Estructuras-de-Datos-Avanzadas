@@ -2,7 +2,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:36
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-03 17:16:59
+* @Last Modified time: 2020-03-04 17:59:30
 */
 #include "../include/tablero.hpp"
 
@@ -25,7 +25,7 @@ Tablero::Tablero(int N, int M, int turnos)
  *
  * @return     The malla.
  */
-std::vector<std::vector<Celula>> Tablero::get_Malla(void)
+Celula** Tablero::get_Malla(void)
 {
 	return malla_;
 }
@@ -75,7 +75,7 @@ unsigned Tablero::get_Filas(void)
  *
  * @param[in]  malla  The malla
  */
-void Tablero::set_Malla(std::vector<std::vector<Celula>> malla)
+void Tablero::set_Malla(Celula** malla)
 {
 	malla_ = malla;
 }
@@ -129,22 +129,32 @@ void Tablero::set_Filas(int filas)
  */
 void Tablero::inicializar(int N, int M, int turnos)
 {
-	set_Columnas(M);
-	set_Filas(N);
-	malla_.resize(get_Filas());
-	for(int i = 0; i < malla_.size(); i++)
-		malla_[i].resize(get_Columnas());
+	set_Columnas(M+2);
+	set_Filas(N+2);
+	malla_ = new Celula*[(N + 2) * (M + 2)];
+	for(int i = 0; i < N + 2; i++) 
+		for(int j = 0; j < M + 2; j++)
+			malla_[i * (M + 2) + j] = new Celula(i, j);
 
+	/*for(int i = 0; i < N + 2; i++) 
+		for(int j = 0; j < M + 2; j++)
+			malla_[i][j] = 0;*/
 
-	for(int i = 0; i < get_Filas(); i++)
-		for(int j = 0; j < get_Columnas(); j++)
-		{
-			malla_[i][j].set_J(j);
-			malla_[i][j].set_I(i);
-			malla_[i][j].set_Estado(0);
-
-		}
-
+	write();
+	
 	set_TurnoActual(0);
 	set_TurnosTotal(turnos);
+}
+
+/**
+ * @brief      Writes by console the map
+ */
+void Tablero::write(void)
+{
+	for(int i = 0; i < get_Columnas() * get_Filas(); i++)
+	{
+		//std::cout << *malla_[i] << " ";
+		//if(malla_[i]->get_Estado() == 0)
+		//	std::cout << malla_[i];
+	}
 }
