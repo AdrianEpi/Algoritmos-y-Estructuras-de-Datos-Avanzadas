@@ -2,7 +2,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:36
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-04 17:59:30
+* @Last Modified time: 2020-03-05 20:27:10
 */
 #include "../include/tablero.hpp"
 
@@ -16,7 +16,10 @@
 Tablero::Tablero(int N, int M, int turnos)
 {
 	assert(N > 2 && M > 2);
-	inicializar(N+2, M+2, turnos);
+	assert(turnos >= 1);
+	inicializar(N, M, turnos);
+	crearCelulasInicio();
+	juegoDeLaVida();
 }
 
 
@@ -121,6 +124,24 @@ void Tablero::set_Filas(int filas)
 }
 
 /**
+ * @brief      Pregunta al usuario con cuantas celulas vivas quiere empezar y sus respectivas posiciones
+ */
+void Tablero::crearCelulasInicio(void)
+{
+	int counter = 0;
+	std::cout << "¿Con cuántas células vivas quiere empezar?";
+	std::cin >> counter;
+	std::cout << "Indique las posiciones (i , j) de la célula: " << std::endl;
+	for(;counter > 0; counter--)
+	{
+		int pos_i= 0, pos_j=0;
+		std::cout << "[" << counter << "]: ";
+		std::cin >> pos_i >> pos_j;
+		malla_[pos_i * get_Columnas() + pos_j]->set_Estado(1);
+	}
+}
+
+/**
  * @brief      Reserva memoria e nicializa el tablero a 0
  *
  * @param[in]  N       The rows
@@ -135,26 +156,53 @@ void Tablero::inicializar(int N, int M, int turnos)
 	for(int i = 0; i < N + 2; i++) 
 		for(int j = 0; j < M + 2; j++)
 			malla_[i * (M + 2) + j] = new Celula(i, j);
-
-	/*for(int i = 0; i < N + 2; i++) 
-		for(int j = 0; j < M + 2; j++)
-			malla_[i][j] = 0;*/
-
-	write();
 	
 	set_TurnoActual(0);
 	set_TurnosTotal(turnos);
 }
+
+
+/**
+ * @brief      Ejecuta el juego de la vida
+ */
+void Tablero::juegoDeLaVida(void)
+{
+	set_TurnoActual(0);
+	for(int i = 0; i < get_TurnosTotal(); i++)
+	{
+		std::cout << std::endl << "Turno: " << get_TurnoActual() + 1 << std::endl;
+		write();
+		siguienteTurno();
+		turno_actual_++;
+	}
+}
+
+/**
+ * @brief      Actualiza el tablero al siguiente turno
+ */
+void Tablero::siguienteTurno(void)
+{
+	for(int i = 1; i < get_Filas(); i++)
+		for(int j = 1; j < get_Columnas(); j++)
+			malla_[i * get_Columnas() + j] -> contarVecinas(*this);
+
+	for(int i = 1; i < get_Filas(); i++)
+		for(int j = 1; j < get_Columnas(); j++)
+			malla_[i * get_Columnas() + j] -> actualizarEstado();
+}
+
+
 
 /**
  * @brief      Writes by console the map
  */
 void Tablero::write(void)
 {
-	for(int i = 0; i < get_Columnas() * get_Filas(); i++)
+	for(int i = 1; i < get_Filas(); i++)
 	{
-		//std::cout << *malla_[i] << " ";
-		//if(malla_[i]->get_Estado() == 0)
-		//	std::cout << malla_[i];
+		for(int j = 1; j < get_Columnas(); j++)
+			std::cout << *malla_[i * get_Columnas() + j] << " ";
+
+		std::cout << std::endl;
 	}
 }

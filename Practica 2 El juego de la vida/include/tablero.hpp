@@ -1,4 +1,4 @@
-
+#pragma once
 #include <vector>
 #include <cassert>
 #include "celula.hpp"
@@ -29,7 +29,11 @@ class Tablero
 		void set_Columnas(int columna);
 		void set_Filas(int filas);		
 
+		void crearCelulasInicio(void);
 		void inicializar(int N, int M, int turnos);
+
+		void juegoDeLaVida(void);
+		void siguienteTurno(void);
 
 		void write(void);
 

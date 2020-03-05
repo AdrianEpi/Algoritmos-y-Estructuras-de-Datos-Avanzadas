@@ -2,9 +2,10 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:45
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-04 18:02:06
+* @Last Modified time: 2020-03-05 20:32:50
 */
 #include "../include/celula.hpp"
+#include "../include/tablero.hpp"
 
 
 /**
@@ -16,6 +17,7 @@
 Celula::Celula(int i, int j)
 {
 	set_Posicion(i, j);
+	set_Estado(0);
 }
 
 /**
@@ -36,6 +38,17 @@ int Celula::get_Estado(void) const
 std::pair<int, int> Celula::get_Posicion(void)
 {
 	return posicion_;
+}
+
+
+/**
+ * @brief      Gets the vecinas vivas.
+ *
+ * @return     The vecinas vivas.
+ */
+int Celula::get_VecinasVivas(void)
+{
+	return num_vecinas_vivas_;
 }
 
 /**
@@ -70,6 +83,58 @@ void Celula::set_Posicion(int i, int j)
 }
 
 /**
+ * @brief      Sets the vecinas vivas.
+ *
+ * @param[in]  num   The new value
+ */
+void Celula::set_VecinasVivas(int num)
+{
+	num_vecinas_vivas_ = num;
+}
+
+/**
+ * @brief      Actualiza el estado de la célula a viva o muerta
+ *
+ * @return     Nuevo estado de la célula
+ */
+int Celula::actualizarEstado(void) 
+{
+	if(get_Estado() == 0)
+	{
+		if(get_VecinasVivas() == 3)
+			set_Estado(1);
+	}
+	else
+	{
+		if(get_VecinasVivas() == 2 || get_VecinasVivas() == 3)
+			set_Estado(1);
+		else
+			set_Estado(0);
+	}
+	return get_Estado();
+}
+
+/**
+ * @brief      Cuenta el número de vecinas vivas de una célula
+ *
+ * @param[in]  board  The board
+ *
+ * @return     numero de vecinas vivas
+ */
+int Celula::contarVecinas(const Tablero& board)
+{
+	int counter = 0;
+	for(int i = get_Posicion().first - 1; i <= get_Posicion().first + 1; i++)
+		for(int j = get_Posicion().second - 1; j <= get_Posicion().second + 1; j++)
+			if(i != get_Posicion().first && j != get_Posicion().second)
+				if(board.get_Malla()[i * board.get_Columnas() + j]->get_Estado() == 1)
+					counter++;
+ 	
+ 	set_VecinasVivas(counter);
+	return get_VecinasVivas();
+}
+
+/**
  * @brief      Assignment operator.
  *
  * @param[in]  estado  The estado
@@ -89,7 +154,7 @@ Celula Celula::operator=(int estado)
  *
  * @return     The result of the bitwise left shift
  */
-std::ostream& Celula::operator<<(std::ostream& cout, const Celula cel)
+std::ostream& operator<<(std::ostream& cout, const Celula cel)
 {
 	if(cel.get_Estado() == 0)
 		cout << 0;
