@@ -2,7 +2,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:36
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-06 17:32:10
+* @Last Modified time: 2020-03-06 17:49:30
 */
 #include "../include/tablero.hpp"
 
@@ -182,12 +182,12 @@ void Tablero::juegoDeLaVida(void)
  */
 void Tablero::siguienteTurno(void)
 {
-	for(int i = 1; i < get_Filas(); i++)
-		for(int j = 1; j < get_Columnas(); j++)
+	for(int i = 1; i < get_Filas() - 1; i++)
+		for(int j = 1; j < get_Columnas() - 1; j++)
 			malla_[i * get_Columnas() + j] -> contarVecinas(*this);
 
-	for(int i = 1; i < get_Filas(); i++)
-		for(int j = 1; j < get_Columnas(); j++)
+	for(int i = 1; i < get_Filas() -1; i++)
+		for(int j = 1; j < get_Columnas() -1; j++)
 			malla_[i * get_Columnas() + j] -> actualizarEstado();
 }
 

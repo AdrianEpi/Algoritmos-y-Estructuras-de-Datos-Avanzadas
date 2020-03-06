@@ -2,7 +2,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:45
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-06 17:32:22
+* @Last Modified time: 2020-03-06 17:56:59
 */
 #include "../include/celula.hpp"
 #include "../include/tablero.hpp"
@@ -126,10 +126,10 @@ int Celula::contarVecinas(const Tablero& board)
 	int counter = 0;
 	for(int i = get_Posicion().first - 1; i <= get_Posicion().first + 1; i++)
 		for(int j = get_Posicion().second - 1; j <= get_Posicion().second + 1; j++)
-			if(i != get_Posicion().first && j != get_Posicion().second)
+			if(i != get_Posicion().first || j != get_Posicion().second)
 				if(board.get_Malla()[i * board.get_Columnas() + j]->get_Estado() == 1)
 					counter++;
- 	
+
  	set_VecinasVivas(counter);
 	return get_VecinasVivas();
 }
@@ -157,9 +157,9 @@ Celula Celula::operator=(int estado)
 std::ostream& operator<<(std::ostream& cout, const Celula cel)
 {
 	if(cel.get_Estado() == 0)
-		cout << 0;
+		cout << "| ";
 	else
-		cout << 'X';
+		cout << "|X";
 
 	return cout;
 }
