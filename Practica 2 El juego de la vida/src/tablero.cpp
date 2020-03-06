@@ -2,7 +2,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:36
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-05 20:27:10
+* @Last Modified time: 2020-03-06 17:32:10
 */
 #include "../include/tablero.hpp"
 
@@ -28,7 +28,7 @@ Tablero::Tablero(int N, int M, int turnos)
  *
  * @return     The malla.
  */
-Celula** Tablero::get_Malla(void)
+Celula** Tablero::get_Malla(void) const
 {
 	return malla_;
 }
@@ -58,7 +58,7 @@ unsigned Tablero::get_TurnoActual(void)
  *
  * @return     The columnas.
  */
-unsigned Tablero::get_Columnas(void)
+unsigned Tablero::get_Columnas(void) const
 {
 	return columnas_;
 }
@@ -198,9 +198,9 @@ void Tablero::siguienteTurno(void)
  */
 void Tablero::write(void)
 {
-	for(int i = 1; i < get_Filas(); i++)
+	for(int i = 1; i < get_Filas() - 1; i++)
 	{
-		for(int j = 1; j < get_Columnas(); j++)
+		for(int j = 1; j < get_Columnas() - 1; j++)
 			std::cout << *malla_[i * get_Columnas() + j] << " ";
 
 		std::cout << std::endl;

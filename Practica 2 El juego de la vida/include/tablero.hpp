@@ -17,10 +17,10 @@ class Tablero
 		Tablero(int N, int M, int turnos);
 		~Tablero(){};
 
-		Celula** get_Malla(void);
+		Celula** get_Malla(void) const;
 		unsigned get_TurnosTotal(void);
 		unsigned get_TurnoActual(void);
-		unsigned get_Columnas(void);
+		unsigned get_Columnas(void) const;
 		unsigned get_Filas(void);
 
 		void set_Malla(Celula** malla);

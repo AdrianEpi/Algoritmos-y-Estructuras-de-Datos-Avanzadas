@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-//#include "tablero.hpp"
 class Tablero;
 class Celula 
 {
