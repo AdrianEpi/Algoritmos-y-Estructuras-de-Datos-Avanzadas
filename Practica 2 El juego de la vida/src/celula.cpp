@@ -2,7 +2,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:45
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-06 17:56:59
+* @Last Modified time: 2020-03-09 08:36:20
 */
 #include "../include/celula.hpp"
 #include "../include/tablero.hpp"
@@ -102,16 +102,27 @@ int Celula::actualizarEstado(void)
 	if(get_Estado() == 0)
 	{
 		if(get_VecinasVivas() == 3)
+		{
 			set_Estado(1);
+			return 1;
+		}
+
+		else
+			return 0;
 	}
 	else
 	{
 		if(get_VecinasVivas() == 2 || get_VecinasVivas() == 3)
+		{
 			set_Estado(1);
+			return 0;
+		}
 		else
+		{
 			set_Estado(0);
+			return 1;
+		}
 	}
-	return get_Estado();
 }
 
 /**

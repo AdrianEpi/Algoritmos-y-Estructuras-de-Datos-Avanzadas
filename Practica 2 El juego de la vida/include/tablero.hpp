@@ -11,6 +11,7 @@ class Tablero
 		unsigned turno_actual_;
 		unsigned columnas_;
 		unsigned filas_;
+		int cambianEstado;
 
 	public:
 		Tablero(){};

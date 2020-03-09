@@ -2,7 +2,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:36
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-06 17:49:30
+* @Last Modified time: 2020-03-09 08:43:14
 */
 #include "../include/tablero.hpp"
 
@@ -20,6 +20,7 @@ Tablero::Tablero(int N, int M, int turnos)
 	inicializar(N, M, turnos);
 	crearCelulasInicio();
 	juegoDeLaVida();
+	cambianEstado = 0;
 }
 
 
@@ -171,6 +172,9 @@ void Tablero::juegoDeLaVida(void)
 	for(int i = 0; i < get_TurnosTotal(); i++)
 	{
 		std::cout << std::endl << "Turno: " << get_TurnoActual() + 1 << std::endl;
+		if(i > 0)
+			std::cout << "Cambian " << cambianEstado << " celulas." << std::endl;
+		
 		write();
 		siguienteTurno();
 		turno_actual_++;
@@ -182,13 +186,19 @@ void Tablero::juegoDeLaVida(void)
  */
 void Tablero::siguienteTurno(void)
 {
+	int counter = 0;
 	for(int i = 1; i < get_Filas() - 1; i++)
 		for(int j = 1; j < get_Columnas() - 1; j++)
 			malla_[i * get_Columnas() + j] -> contarVecinas(*this);
 
 	for(int i = 1; i < get_Filas() -1; i++)
 		for(int j = 1; j < get_Columnas() -1; j++)
-			malla_[i * get_Columnas() + j] -> actualizarEstado();
+		{
+			if((malla_[i * get_Columnas() + j] -> actualizarEstado()) == 1)
+				counter++;
+		}
+
+	cambianEstado = counter;
 }
 
 
