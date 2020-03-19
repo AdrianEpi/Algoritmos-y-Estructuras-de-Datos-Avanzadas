@@ -17,14 +17,20 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:45
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-14 09:11:53
+* @Last Modified time: 2020-03-19 12:59:53
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #include "../include/celula.hpp"
-#include "../include/tablero.hpp"
 
 /*------------------------------------------------*/
+
+/**
+ * @brief      Constructs a new instance.
+ */
+Celula::Celula() {
+	std::cout << std::endl << "Error, la célua no se puede inicializar vacía, se requiere el estado y las posiciones." << std::endl;
+}
 
 /**
  * @brief      Constructs a new instance.
@@ -34,48 +40,51 @@
  */
 Celula::Celula(int i, int j) {
 	set_Posicion(i, j);
-	set_Estado(0);
+	createCelula(0, i, j);	// La creamos por defecto vacía
 }
 
 /**
- * @brief      Gets the estado.
+ * @brief      Constructs a new instance.
  *
- * @return     The estado.
+ * @param[in]  estado  The state
+ * @param[in]  i       position i
+ * @param[in]  j       position j
  */
-int Celula::get_Estado(void) const {
-	return estado_;
+Celula::Celula(int estado, int i, int j) {
+	set_Posicion(i, j);
+	createCelula(estado, i, j);
 }
 
 /**
- * @brief      Gets the posicion.
- *
- * @return     The posicion.
+ * @brief      Destroys the object.
  */
-std::pair<int, int> Celula::get_Posicion(void) {
+Celula::~Celula() {
+}
+
+/**
+ * @brief      Gets the position.
+ *
+ * @return     The position.
+ */
+std::pair<int, int> Celula::get_Posicion(void) const {
 	return posicion_;
 }
 
-
 /**
- * @brief      Gets the vecinas vivas.
+ * @brief      Gets the alive neighbours.
  *
- * @return     The vecinas vivas.
+ * @return     The alive neighbours.
  */
-int Celula::get_VecinasVivas(void) {
+int Celula::get_VecinasVivas(void) const {
 	return num_vecinas_vivas_;
 }
 
-/**
- * @brief      Sets the estado.
- *
- * @param[in]  estado  The estado
- */
-void Celula::set_Estado(int estado) {
-	estado_ = estado;
+int Celula::getEstado() const {
+
 }
 
 /**
- * @brief      Sets the posicion.
+ * @brief      Sets the position.
  *
  * @param[in]  pos   The new value
  */
@@ -84,64 +93,51 @@ void Celula::set_Posicion(std::pair<int, int> pos) {
 }
 
 /**
- * @brief      Sets the posicion.
+ * @brief      Sets the poticion.
  *
- * @param[in]  i     The new value
- * @param[in]  j     The new value
+ * @param[in]  i     The new i
+ * @param[in]  j     The new j
  */
 void Celula::set_Posicion(int i, int j) {
 	posicion_ = std::make_pair(i, j);
 }
 
 /**
- * @brief      Sets the vecinas vivas.
+ * @brief      Sets the alive neighbours.
  *
- * @param[in]  num   The new value
+ * @param[in]  num   The new alive neighbours
  */
 void Celula::set_VecinasVivas(int num) {
 	num_vecinas_vivas_ = num;
 }
 
 /**
- * @brief      Actualiza el estado de la célula a viva o muerta
+ * @brief      Creates a cel.
  *
- * @return     Nuevo estado de la célula
+ * @param[in]  estado  The state
+ * @param[in]  i       Position i
+ * @param[in]  j       Position j
+ *
+ * @return     { description_of_the_return_value }
  */
-int Celula::actualizarEstado(void)  {
-	if(get_Estado() == 0) {
-		if(get_VecinasVivas() == 3) {
-			set_Estado(1);
-			return 1;
-		}
-
-		else
-			return 0;
-	}
-	else {
-		if(get_VecinasVivas() == 2 || get_VecinasVivas() == 3) {
-			set_Estado(1);
-			return 0;
-		}
-		else {
-			set_Estado(0);
-			return 1;
-		}
-	}
+Celula* Celula::createCelula(int estado, int i, int j) {
+	Celula *newCelula;
+	return newCelula;
 }
 
 /**
- * @brief      Cuenta el número de vecinas vivas de una célula
+ * @brief      Count the number of neighbours alive.
  *
  * @param[in]  board  The board
  *
- * @return     numero de vecinas vivas
+ * @return     The number of neighbours alive.
  */
 int Celula::contarVecinas(const Tablero& board) {
 	int counter = 0;
 	for(int i = get_Posicion().first - 1; i <= get_Posicion().first + 1; i++)
 		for(int j = get_Posicion().second - 1; j <= get_Posicion().second + 1; j++)
 			if(i != get_Posicion().first || j != get_Posicion().second)
-				if(board.get_Malla()[i * board.get_Columnas() + j]->get_Estado() == 1)
+				if(board.get_Malla()[i * board.get_Columnas() + j]->getEstado() != 0)
 					counter++;
 
  	set_VecinasVivas(counter);
@@ -149,29 +145,25 @@ int Celula::contarVecinas(const Tablero& board) {
 }
 
 /**
- * @brief      Assignment operator.
+ * @brief      Updates the state of a cel
  *
- * @param[in]  estado  The estado
- *
- * @return     The result of the assignment
+ * @return     The new cel state
  */
-Celula Celula::operator=(int estado) {
-	estado_ = estado;
-	return *this;
+int Celula::actualizarEstado(void) {
+  if (get_VecinasVivas() == 3)
+    return 1;
+  
+  else if (get_VecinasVivas() == 3 || get_VecinasVivas() == 6 || get_VecinasVivas() == 8)
+    return 2;
+  
+  else if (get_VecinasVivas() == 3 || get_VecinasVivas() == 4 || get_VecinasVivas() == 6)
+    return 3;
+  
+  else
+    return 0;
+
 }
 
-/**
- * @brief      Bitwise left shift operator.
- *
- * @param      cout  The cout
- *
- * @return     The result of the bitwise left shift
- */
-std::ostream& operator<<(std::ostream& cout, const Celula cel) {
-	if(cel.get_Estado() == 0)
-		cout << "| ";
-	else
-		cout << "|X";
+std::ostream& Celula::mostrar(std::ostream&) const {
 
-	return cout;
 }

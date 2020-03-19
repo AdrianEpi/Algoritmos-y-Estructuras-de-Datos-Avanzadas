@@ -17,11 +17,14 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:36
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-14 09:10:49
+* @Last Modified time: 2020-03-19 12:40:47
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #include "../include/tablero.hpp"
+#include "../include/celula1.hpp"
+#include "../include/celula2.hpp"
+#include "../include/celula3.hpp"
 
 /*------------------------------------------------*/
 
@@ -136,7 +139,7 @@ void Tablero::set_Filas(int filas) {
  * @brief      Pregunta al usuario con cuantas celulas vivas quiere empezar y sus respectivas posiciones
  */
 void Tablero::crearCelulasInicio(void) {
-	int counter = 0;
+	/*int counter = 0;
 	std::cout << "¿Con cuántas células vivas quiere empezar?";
 	std::cin >> counter;
 	std::cout << "Indique las posiciones (i , j) de la célula: " << std::endl;
@@ -145,7 +148,7 @@ void Tablero::crearCelulasInicio(void) {
 		std::cout << "[" << counter << "]: ";
 		std::cin >> pos_i >> pos_j;
 		malla_[pos_i * get_Columnas() + pos_j]->set_Estado(1);
-	}
+	}*/
 }
 
 /**
@@ -156,7 +159,7 @@ void Tablero::crearCelulasInicio(void) {
  * @param[in]  turnos  The turnos
  */
 void Tablero::inicializar(int N, int M, int turnos) {
-	set_Columnas(M+2);
+	/*set_Columnas(M+2);
 	set_Filas(N+2);
 	malla_ = new Celula*[(N + 2) * (M + 2)];
 	for(int i = 0; i < N + 2; i++) 
@@ -164,7 +167,7 @@ void Tablero::inicializar(int N, int M, int turnos) {
 			malla_[i * (M + 2) + j] = new Celula(i, j);
 	
 	set_TurnoActual(0);
-	set_TurnosTotal(turnos);
+	set_TurnosTotal(turnos);*/
 }
 
 
@@ -188,7 +191,7 @@ void Tablero::juegoDeLaVida(void) {
  * @brief      Actualiza el tablero al siguiente turno
  */
 void Tablero::siguienteTurno(void) {
-	int counter = 0;
+	/*int counter = 0;
 	for(int i = 1; i < get_Filas() - 1; i++)
 		for(int j = 1; j < get_Columnas() - 1; j++)
 			malla_[i * get_Columnas() + j] -> contarVecinas(*this);
@@ -198,19 +201,40 @@ void Tablero::siguienteTurno(void) {
 			if((malla_[i * get_Columnas() + j] -> actualizarEstado()) == 1)
 				counter++;
 
-	cambianEstado = counter;
+	cambianEstado = counter;*/
 }
 
+void Tablero::actualizar(int estado, int i, int j) {
+  delete malla_[i * get_Columnas() + j];
+  Celula *newCelula;
+  if (estado == 1)
+    newCelula = new Celula1(i, j);
+  
+  /*else if (estado == 2)
+    newCelula = new Celula2(i, j);
+  
+  else if (estado == 3)
+    newCelula = new Celula3(i, j);*/
+  
+  else if (estado == 0)
+    newCelula = new Celula(estado, i, j);
+  
+  else {
+    std::cout << "Error al intentar actualizar la celula con un tipo inválido" << "\n";
+    exit(0);
+  }
+  malla_[i * get_Columnas() + j] = newCelula;
+}
 
 
 /**
  * @brief      Writes by console the map
  */
 void Tablero::write(void) {
-	for(int i = 1; i < get_Filas() - 1; i++) {
+	/*for(int i = 1; i < get_Filas() - 1; i++) {
 		for(int j = 1; j < get_Columnas() - 1; j++)
 			std::cout << *malla_[i * get_Columnas() + j] << " ";
 
 		std::cout << std::endl;
-	}
+	}*/
 }

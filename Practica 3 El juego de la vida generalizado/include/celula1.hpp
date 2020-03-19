@@ -2,7 +2,7 @@
 =====================================================================================
 	=                                                                              =
 	=            Proyecto:      Práctica 2 El juego de la vida                     =
-	=            Archivo:       tablero.hpp                                        =
+	=            Archivo:       celula.hpp                                         =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         02/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
@@ -15,8 +15,7 @@
 ===================================================================================*/
 /*----------  DECLARACION DE LIBRERIAS  ----------*/
 
-#include <vector>
-#include <cassert>
+#include <iostream>
 
 /*------------------------------------------------*/
 
@@ -25,48 +24,35 @@
 #pragma once
 #include "celula.hpp"
 
-
 /*------------------------------------------------*/
 
-class Celula;
-class Tablero
-{
+class Tablero;
+//class Celula;
+
+class Celula1 : public Celula {
+	
 	private:
 		// Attribs
-		Celula** malla_;
-		unsigned turnos_total_;
-		unsigned turno_actual_;
-		unsigned columnas_;
-		unsigned filas_;
-		int cambianEstado;
+		std::pair<int, int> posicion_; //(i, j)
+		int num_vecinas_vivas_;
 
 	public:
 		// Builders & Destroyer
-		Tablero(){};
-		Tablero(int N, int M, int turnos);
-		~Tablero(){};
+		//Celula1() : Celula();
+		Celula1(int i, int j);
+		~Celula1();
 
 		// Getters & Setters
-		Celula** get_Malla(void) const;
-		unsigned get_TurnosTotal(void);
-		unsigned get_TurnoActual(void);
-		unsigned get_Columnas(void) const;
-		unsigned get_Filas(void);
+		std::pair<int, int> get_Posicion(void);
+		int get_VecinasVivas(void);
 
-		void set_Malla(Celula** malla);
-		void set_TurnosTotal(int turno);
-		void set_TurnoActual(int turno);
-		void set_Columnas(int columna);
-		void set_Filas(int filas);		
+		void set_Estado(int estado);
+		void set_Posicion(std::pair<int, int> pos);
+		void set_Posicion(int i, int j);
+		void set_VecinasVivas(int num);
 
 		// Functions
-		void actualizar(int estado, int i, int j);
-		void crearCelulasInicio(void);
-		void inicializar(int N, int M, int turnos);
+		int actualizarEstado(void);
+		int contarVecinas(const Tablero& board);
 
-		void juegoDeLaVida(void);
-		void siguienteTurno(void);
-
-		// Write
-		void write(void);
 };
