@@ -4,7 +4,7 @@
 	=            Proyecto:      Práctica 2 El juego de la vida                     =
 	=            Archivo:       tablero.hpp                                        =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
-	=            Fecha:         02/03/2020                                         =
+	=            Fecha:         16/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
 	=            Lenguaje:      C++                                                =
 	=            Correo:        alu0101158280@ull.edu.es                           =
@@ -29,6 +29,7 @@
 /*------------------------------------------------*/
 
 class Celula;
+
 class Tablero
 {
 	private:
@@ -42,31 +43,31 @@ class Tablero
 
 	public:
 		// Builders & Destroyer
-		Tablero(){};
-		Tablero(int N, int M, int turnos);
-		~Tablero(){};
+		Tablero ();
+		Tablero (int N, int M, int turnos);
+		~Tablero ();
 
 		// Getters & Setters
-		Celula** get_Malla(void) const;
-		unsigned get_TurnosTotal(void);
-		unsigned get_TurnoActual(void);
-		unsigned get_Columnas(void) const;
-		unsigned get_Filas(void);
+		Celula** get_Malla (void) const;
+		unsigned get_TurnosTotal (void);
+		unsigned get_TurnoActual (void);
+		unsigned get_Columnas (void) const;
+		unsigned get_Filas (void);
 
-		void set_Malla(Celula** malla);
-		void set_TurnosTotal(int turno);
-		void set_TurnoActual(int turno);
-		void set_Columnas(int columna);
-		void set_Filas(int filas);		
+		void set_Malla (Celula** malla);
+		void set_TurnosTotal (int turno);
+		void set_TurnoActual (int turno);
+		void set_Columnas (int columna);
+		void set_Filas (int filas);		
 
 		// Functions
-		void actualizar(int estado, int i, int j);
-		void crearCelulasInicio(void);
-		void inicializar(int N, int M, int turnos);
+		void actualizar (int estado, int i, int j);
+		void crearCelulasInicio (void);
+		void inicializar (int N, int M, int turnos);
 
-		void juegoDeLaVida(void);
-		void siguienteTurno(void);
+		void juegoDeLaVida (void);
+		void siguienteTurno (void);
 
 		// Write
-		void write(void);
+		void write (void);
 };

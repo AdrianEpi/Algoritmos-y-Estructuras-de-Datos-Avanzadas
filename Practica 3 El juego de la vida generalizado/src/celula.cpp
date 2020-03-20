@@ -4,7 +4,7 @@
 	=            Proyecto:      Práctica 2 El juego de la vida                     =
 	=            Archivo:       celula.cpp                                         =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
-	=            Fecha:         02/03/2020                                         =
+	=            Fecha:         16/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
 	=            Lenguaje:      C++                                                =
 	=            Correo:        alu0101158280@ull.edu.es                           =
@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:45
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-19 12:59:53
+* @Last Modified time: 2020-03-20 10:14:37
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -28,7 +28,7 @@
 /**
  * @brief      Constructs a new instance.
  */
-Celula::Celula() {
+Celula::Celula () {
 	std::cout << std::endl << "Error, la célua no se puede inicializar vacía, se requiere el estado y las posiciones." << std::endl;
 }
 
@@ -38,7 +38,8 @@ Celula::Celula() {
  * @param[in]  i     position i
  * @param[in]  j     position j
  */
-Celula::Celula(int i, int j) {
+Celula::Celula (int i, int j):
+posicion_(0, 0) {
 	set_Posicion(i, j);
 	createCelula(0, i, j);	// La creamos por defecto vacía
 }
@@ -50,7 +51,8 @@ Celula::Celula(int i, int j) {
  * @param[in]  i       position i
  * @param[in]  j       position j
  */
-Celula::Celula(int estado, int i, int j) {
+Celula::Celula (int estado, int i, int j):
+posicion_(0, 0) {
 	set_Posicion(i, j);
 	createCelula(estado, i, j);
 }
@@ -58,7 +60,8 @@ Celula::Celula(int estado, int i, int j) {
 /**
  * @brief      Destroys the object.
  */
-Celula::~Celula() {
+Celula::~Celula () {
+
 }
 
 /**
@@ -66,7 +69,7 @@ Celula::~Celula() {
  *
  * @return     The position.
  */
-std::pair<int, int> Celula::get_Posicion(void) const {
+std::pair<int, int> Celula::get_Posicion (void) const {
 	return posicion_;
 }
 
@@ -75,11 +78,11 @@ std::pair<int, int> Celula::get_Posicion(void) const {
  *
  * @return     The alive neighbours.
  */
-int Celula::get_VecinasVivas(void) const {
+int Celula::get_VecinasVivas (void) const {
 	return num_vecinas_vivas_;
 }
 
-int Celula::getEstado() const {
+int Celula::getEstado () const {
 
 }
 
@@ -88,7 +91,7 @@ int Celula::getEstado() const {
  *
  * @param[in]  pos   The new value
  */
-void Celula::set_Posicion(std::pair<int, int> pos) {
+void Celula::set_Posicion (std::pair<int, int> pos) {
 	posicion_ = pos;
 }
 
@@ -98,7 +101,7 @@ void Celula::set_Posicion(std::pair<int, int> pos) {
  * @param[in]  i     The new i
  * @param[in]  j     The new j
  */
-void Celula::set_Posicion(int i, int j) {
+void Celula::set_Posicion (int i, int j) {
 	posicion_ = std::make_pair(i, j);
 }
 
@@ -107,12 +110,12 @@ void Celula::set_Posicion(int i, int j) {
  *
  * @param[in]  num   The new alive neighbours
  */
-void Celula::set_VecinasVivas(int num) {
+void Celula::set_VecinasVivas (int num) {
 	num_vecinas_vivas_ = num;
 }
 
 /**
- * @brief      Creates a cel.
+ * @brief      Creates a cell.
  *
  * @param[in]  estado  The state
  * @param[in]  i       Position i
@@ -120,7 +123,7 @@ void Celula::set_VecinasVivas(int num) {
  *
  * @return     { description_of_the_return_value }
  */
-Celula* Celula::createCelula(int estado, int i, int j) {
+Celula* Celula::createCelula (int estado, int i, int j) {
 	Celula *newCelula;
 	return newCelula;
 }
@@ -132,7 +135,7 @@ Celula* Celula::createCelula(int estado, int i, int j) {
  *
  * @return     The number of neighbours alive.
  */
-int Celula::contarVecinas(const Tablero& board) {
+int Celula::contarVecinas (const Tablero& board) {
 	int counter = 0;
 	for(int i = get_Posicion().first - 1; i <= get_Posicion().first + 1; i++)
 		for(int j = get_Posicion().second - 1; j <= get_Posicion().second + 1; j++)
@@ -145,11 +148,11 @@ int Celula::contarVecinas(const Tablero& board) {
 }
 
 /**
- * @brief      Updates the state of a cel
+ * @brief      Updates the state of a cell
  *
- * @return     The new cel state
+ * @return     The new cell state
  */
-int Celula::actualizarEstado(void) {
+int Celula::actualizarEstado (void) {
   if (get_VecinasVivas() == 3)
     return 1;
   
@@ -164,6 +167,14 @@ int Celula::actualizarEstado(void) {
 
 }
 
-std::ostream& Celula::mostrar(std::ostream&) const {
-
+/**
+ * @brief      Prints an empty char on screen because the cell if dead
+ *
+ * @param      os    output stream
+ *
+ * @return     The output stream
+ */
+std::ostream& Celula::mostrar (std::ostream& os) const {
+	os << ' ';
+	return os;
 }
