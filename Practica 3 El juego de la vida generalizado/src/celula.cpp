@@ -1,7 +1,7 @@
 /*===================================================================================
 =====================================================================================
 	=                                                                              =
-	=            Proyecto:      Práctica 2 El juego de la vida                     =
+	=            Proyecto:      Práctica 3 El juego de la vida generalizado        =
 	=            Archivo:       celula.cpp                                         =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         16/03/2020                                         =
@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:45
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-20 10:14:37
+* @Last Modified time: 2020-03-20 12:22:45
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -82,8 +82,13 @@ int Celula::get_VecinasVivas (void) const {
 	return num_vecinas_vivas_;
 }
 
+/**
+ * @brief      Gets the estado.
+ *
+ * @return     The estado.
+ */
 int Celula::getEstado () const {
-
+	return 0;
 }
 
 /**

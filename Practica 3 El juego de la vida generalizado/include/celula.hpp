@@ -1,7 +1,7 @@
 /*===================================================================================
 =====================================================================================
 	=                                                                              =
-	=            Proyecto:      Práctica 2 El juego de la vida                     =
+	=            Proyecto:      Práctica 3 El juego de la vida generalizado        =
 	=            Archivo:       celula.hpp                                         =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         16/03/2020                                         =

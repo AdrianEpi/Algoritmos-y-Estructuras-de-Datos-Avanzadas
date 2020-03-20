@@ -1,7 +1,7 @@
 /*===================================================================================
 =====================================================================================
 	=                                                                              =
-	=            Proyecto:      Práctica 2 El juego de la vida                     =
+	=            Proyecto:      Práctica 3 El juego de la vida generalizado        =
 	=            Archivo:       tablero.hpp                                        =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         16/03/2020                                         =
@@ -61,7 +61,7 @@ class Tablero
 		void set_Filas (int filas);		
 
 		// Functions
-		void actualizar (int estado, int i, int j);
+		void actualizarCelula (int estado, int i, int j);
 		void crearCelulasInicio (void);
 		void inicializar (int N, int M, int turnos);
 
