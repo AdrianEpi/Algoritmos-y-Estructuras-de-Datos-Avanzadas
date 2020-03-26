@@ -1,5 +1,5 @@
 #Variable objetos
-OBJECTS = main.o celula.o celula1.o celula2.o celula3.o tablero.o
+OBJECTS = main.o celula.o celula1.o celula2.o celula3.o celula4.o tablero.o
 #Flags de compilacion
 CFLAGS = -c -std=c++17
 
@@ -24,6 +24,9 @@ celula2.o: ../src/celula2.cpp ../include/celula2.hpp
 
 celula3.o: ../src/celula3.cpp ../include/celula3.hpp
 	g++ $(CFLAGS) ../src/celula3.cpp
+
+celula4.o: ../src/celula4.cpp ../include/celula4.hpp
+	g++ $(CFLAGS) ../src/celula4.cpp
 
 tablero.o: ../src/tablero.cpp ../include/tablero.hpp
 	g++ $(CFLAGS) ../src/tablero.cpp

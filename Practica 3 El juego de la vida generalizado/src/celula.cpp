@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:45
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-20 12:22:45
+* @Last Modified time: 2020-03-26 08:32:37
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -158,17 +158,20 @@ int Celula::contarVecinas (const Tablero& board) {
  * @return     The new cell state
  */
 int Celula::actualizarEstado (void) {
-  if (get_VecinasVivas() == 3)
-    return 1;
-  
-  else if (get_VecinasVivas() == 3 || get_VecinasVivas() == 6 || get_VecinasVivas() == 8)
-    return 2;
-  
-  else if (get_VecinasVivas() == 3 || get_VecinasVivas() == 4 || get_VecinasVivas() == 6)
-    return 3;
-  
-  else
-    return 0;
+	if (get_VecinasVivas() == 3)
+		return 1;
+
+	else if (get_VecinasVivas() == 3 || get_VecinasVivas() == 6 || get_VecinasVivas() == 8)
+		return 2;
+
+	else if (get_VecinasVivas() == 3 || get_VecinasVivas() == 4 || get_VecinasVivas() == 6)
+		return 3;
+
+	else if(get_VecinasVivas() == 1)
+		return 4;
+
+	else
+		return 0;
 
 }
 

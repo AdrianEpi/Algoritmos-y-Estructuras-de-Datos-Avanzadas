@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-02 08:56:36
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-20 12:24:20
+* @Last Modified time: 2020-03-26 08:33:25
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -25,6 +25,7 @@
 #include "../include/celula1.hpp"
 #include "../include/celula2.hpp"
 #include "../include/celula3.hpp"
+#include "../include/celula4.hpp"
 
 /*------------------------------------------------*/
 
@@ -239,6 +240,9 @@ void Tablero::actualizarCelula (int estado, int i, int j) {
 
 	else if (estado == 0)
 		newCelula = new Celula(i, j);
+
+	else if (estado == 4)
+		newCelula = new Celula4(i, j);
 
 	else {
 		std::cout << "Error al intentar actualizar la celula con un tipo inválido" << "\n";
