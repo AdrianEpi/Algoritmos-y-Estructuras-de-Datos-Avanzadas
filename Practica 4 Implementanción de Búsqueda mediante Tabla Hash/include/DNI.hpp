@@ -2,7 +2,7 @@
 =====================================================================================
 	=                                                                              =
 	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       table.hpp                                          =
+	=            Archivo:       DNI.hpp                                            =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         30/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
@@ -16,46 +16,41 @@
 /*----------  DECLARACION DE LIBRERIAS  ----------*/
 
 #include <iostream>
-#include <vector>
 
 /*------------------------------------------------*/
 
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #pragma once
-#include "cell.hpp"
 
 /*------------------------------------------------*/
 
-template <class T>
+class DNI {
 
-class Table {
-	
-	private:
-		int cellNumber_;
-		std::vector<Cell<T>> cells_;
-		//fDispersion //Recibe como parámetro un valor X del tipo Clave y retorna un valor en el intervalo [0..nCeldas-1] que indica la posición de la celda dentro de vCelda que debería contener valor X del tipo Clave. El constructor de la tabla hash recibe un parámetro que le indica la función de dispersión a instanciar.
-		//fExploracion //Recibe como parámetros un valor X del tipo Clave y el número del intento de exploración (i>0), que se incrementa en cada llamada a esta función. En el i-ésimo intento de exploración la función retorna el desplazamiento, respecto a la posición dada por la función de dispersión, de la celda dentro de vCelda que debería contener valor X del tipo Clave. El constructor de la tabla hash recibe un parámetro que le indica la función de exploración a instanciar. 		//
+	private:	
+		int code_;
 
 	public:
 		// Builders & Destroyer
-		Table ();
-		Table (int cellNumber, int blockNumber, int explorationSelector);
-		~Table ();
+		DNI ();
+		DNI (int code);
+		DNI (DNI& copy);
+		~DNI ();
 
 		// Getters & Setters
-		int get_CellNumber (void) const;
-		std::vector<Cell<T>> get_Cells (void) const;
+		int get_Code (void) const;
 
-		void set_CellNumber (int number);
-		void set_Cells (std::vector<Cell<T>> cell);
+		void set_Code (int code);
 
-		// Functions
-		bool insertData (T& data) const;
-		bool searchData (T& data) const;
-
+		// Operators Overload
+		bool operator== (DNI& dni) const;
+		bool operator<= (DNI& dni) const;
+		bool operator>= (DNI& dni) const;
+		bool operator!= (DNI& dni) const;
+		DNI& operator= (DNI& dni);
+		operator unsigned long ();
+		
 		// Read & Write
 		std::ostream write (std::ostream os) const;
-
 
 };

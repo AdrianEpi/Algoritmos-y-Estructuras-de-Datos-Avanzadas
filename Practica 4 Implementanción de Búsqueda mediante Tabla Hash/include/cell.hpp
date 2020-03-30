@@ -32,22 +32,33 @@ class Cell {
 	private:
 		int blockNumber_;
 		T* block_;
+		int usability_; /* 0 -> empty cell (never has been used)
+		                 * 1 -> cell in use
+		                 * -1 -> empty cell but has been prevously used
+		                 */
+		
 
 	public:
+		// Builders & Destroyer
 		Cell ();
-		Cell (int block);
+		Cell (int blockNumber);
 		~Cell ();
 
+		// Getters & Setters
 		int get_BlockNumber (void) const;
 		T get_Block (void) const;
+		int get_Usability (void) const;
 
-		void set_BlockNumber (int block);
+		void set_BlockNumber (int blockNumber);
 		void set_Block (T block);
+		void set_Usability (int usability);
 
+		// Functions
 		bool insertData (T data);
 		bool search (T data);
 		bool isFull (void) const;
 
+		// Read & Write
 		std::ostream write (std::ostream os) const;
 
-}
+};

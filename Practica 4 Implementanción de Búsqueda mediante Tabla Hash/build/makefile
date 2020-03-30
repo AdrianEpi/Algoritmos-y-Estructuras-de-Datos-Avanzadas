@@ -1,5 +1,5 @@
 #Variable objetos
-OBJECTS = main.o cell.o table.o
+OBJECTS = main.o cell.o table.o DNI.o
 #Flags de compilacion
 CFLAGS = -c -std=c++17
 
@@ -17,6 +17,9 @@ cell.o: ../src/cell.cpp ../include/cell.hpp
 
 table.o: ../src/table.cpp ../include/table.hpp
 	g++ $(CFLAGS) ../src/table.cpp
+
+DNI.o: ../src/DNI.cpp ../include/DNI.hpp
+	g++ $(CFLAGS) ../src/DNI.cpp
 
 
 .PHONY: clean
