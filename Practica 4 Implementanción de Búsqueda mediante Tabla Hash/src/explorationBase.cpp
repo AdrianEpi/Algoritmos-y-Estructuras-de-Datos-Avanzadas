@@ -2,7 +2,7 @@
 =====================================================================================
 	=                                                                              =
 	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       DNI.hpp                                            =
+	=            Archivo:       explorationBase.cpp                                    =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         30/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
@@ -13,44 +13,45 @@
 	=                                                                              =
 =====================================================================================
 ===================================================================================*/
-/*----------  DECLARACION DE LIBRERIAS  ----------*/
-
-#include <iostream>
-
-/*------------------------------------------------*/
-
+/*
+* @Author: Adrián Epifanio
+* @Date:   2020-03-31 08:19:42
+* @Last Modified by:   Adrián Epifanio
+* @Last Modified time: 2020-03-31 10:09:33
+*/
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
-#pragma once
+#include "../include/explorationBase.hpp"
 
 /*------------------------------------------------*/
 
-class DNI {
+/**
+ * @brief      Constructs a new instance.
+ */
+template <class T>
+ExplorationBase<T>::ExplorationBase () {
 
-	private:	
-		unsigned long code_;
+}
 
-	public:
-		// Builders & Destroyer
-		DNI ();
-		DNI (unsigned long code);
-		DNI (DNI& copy);
-		~DNI ();
+/**
+ * @brief      Destroys the object.
+ */
+template <class T>
+ExplorationBase<T>::~ExplorationBase () {
 
-		// Getters & Setters
-		unsigned long get_Code (void) const;
+}
 
-		void set_Code (unsigned long code);
+/**
+ * @brief      Searchs the cells to find one where store the data
+ *
+ * @param[in]  i     { parameter_description }
+ * @param[in]  data  The data
+ *
+ * @tparam     T     The data type.
+ *
+ * @return     The cell position
+ */
+template <class T>
+int ExplorationBase<T>::operator() (int i, const T& data) {
 
-		// Operators Overload
-		bool operator== (DNI& dni) const;
-		bool operator<= (DNI& dni) const;
-		bool operator>= (DNI& dni) const;
-		bool operator!= (DNI& dni) const;
-		DNI& operator= (DNI& dni);
-		operator unsigned long ();
-		
-		// Read & Write
-		std::ostream write (std::ostream os) const;
-
-};
+}

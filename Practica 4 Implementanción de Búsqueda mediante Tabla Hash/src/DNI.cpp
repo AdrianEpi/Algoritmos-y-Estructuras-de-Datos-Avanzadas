@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 17:41:42
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-30 18:59:21
+* @Last Modified time: 2020-03-31 09:08:24
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -37,7 +37,7 @@ DNI::DNI () {
  *
  * @param[in]  code  The code
  */
-DNI::DNI (int code) {
+DNI::DNI (unsigned long code) {
 	set_Code (code);
 }
 
@@ -62,7 +62,7 @@ DNI::~DNI () {
  *
  * @return     The code.
  */
-int DNI::get_Code (void) const {
+unsigned long DNI::get_Code (void) const {
 	return code_;
 }
 
@@ -71,7 +71,7 @@ int DNI::get_Code (void) const {
  *
  * @param[in]  code  The code
  */
-void DNI::set_Code (int code) {
+void DNI::set_Code (unsigned long code) {
 	code_ = code;
 }
 

@@ -2,7 +2,7 @@
 =====================================================================================
 	=                                                                              =
 	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       DNI.hpp                                            =
+	=            Archivo:       explorationBase.hpp                                    =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         30/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
@@ -25,32 +25,12 @@
 
 /*------------------------------------------------*/
 
-class DNI {
-
-	private:	
-		unsigned long code_;
+template <class T>
+class ExplorationBase {
 
 	public:
-		// Builders & Destroyer
-		DNI ();
-		DNI (unsigned long code);
-		DNI (DNI& copy);
-		~DNI ();
+		ExplorationBase ();
+		virtual ~ExplorationBase ();
 
-		// Getters & Setters
-		unsigned long get_Code (void) const;
-
-		void set_Code (unsigned long code);
-
-		// Operators Overload
-		bool operator== (DNI& dni) const;
-		bool operator<= (DNI& dni) const;
-		bool operator>= (DNI& dni) const;
-		bool operator!= (DNI& dni) const;
-		DNI& operator= (DNI& dni);
-		operator unsigned long ();
-		
-		// Read & Write
-		std::ostream write (std::ostream os) const;
-
+		virtual int operator() (int i, const T& data) = 0;
 };

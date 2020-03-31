@@ -2,12 +2,12 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 14:20:30
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-30 18:20:05
+* @Last Modified time: 2020-03-31 10:15:44
 */
 
 #include "../include/table.hpp"
-#include "../include/cell.hpp"
 #include "../include/DNI.hpp"
+
 int main (void) {
 	/*
 El programa principal realizará la siguiente secuencia de pasos:

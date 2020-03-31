@@ -24,6 +24,8 @@
 
 #pragma once
 #include "cell.hpp"
+#include "explorationBase.hpp"
+#include "dispersionBase.hpp"
 
 /*------------------------------------------------*/
 
@@ -34,8 +36,8 @@ class Table {
 	private:
 		int cellNumber_;
 		std::vector<Cell<T>> cells_;
-		//fDispersion //Recibe como parámetro un valor X del tipo Clave y retorna un valor en el intervalo [0..nCeldas-1] que indica la posición de la celda dentro de vCelda que debería contener valor X del tipo Clave. El constructor de la tabla hash recibe un parámetro que le indica la función de dispersión a instanciar.
-		//fExploracion //Recibe como parámetros un valor X del tipo Clave y el número del intento de exploración (i>0), que se incrementa en cada llamada a esta función. En el i-ésimo intento de exploración la función retorna el desplazamiento, respecto a la posición dada por la función de dispersión, de la celda dentro de vCelda que debería contener valor X del tipo Clave. El constructor de la tabla hash recibe un parámetro que le indica la función de exploración a instanciar. 		//
+		DispersionBase<T>* fDispersion_; //Recibe como parámetro un valor X del tipo Clave y retorna un valor en el intervalo [0..nCeldas-1] que indica la posición de la celda dentro de vCelda que debería contener valor X del tipo Clave. El constructor de la tabla hash recibe un parámetro que le indica la función de dispersión a instanciar.
+		ExplorationBase<T>* fExploration_; //Recibe como parámetros un valor X del tipo Clave y el número del intento de exploración (i>0), que se incrementa en cada llamada a esta función. En el i-ésimo intento de exploración la función retorna el desplazamiento, respecto a la posición dada por la función de dispersión, de la celda dentro de vCelda que debería contener valor X del tipo Clave. El constructor de la tabla hash recibe un parámetro que le indica la función de exploración a instanciar. 		//
 
 	public:
 		// Builders & Destroyer
@@ -46,9 +48,13 @@ class Table {
 		// Getters & Setters
 		int get_CellNumber (void) const;
 		std::vector<Cell<T>> get_Cells (void) const;
+		DispersionBase<T>* get_Dispersion (void) const;
+		ExplorationBase<T>* get_Exploration (void) const;
 
 		void set_CellNumber (int number);
 		void set_Cells (std::vector<Cell<T>> cell);
+		void set_Dispersion (DispersionBase<T>* dispersion);
+		void set_Exploracion (ExplorationBase<T>* exploration);
 
 		// Functions
 		bool insertData (T& data) const;
