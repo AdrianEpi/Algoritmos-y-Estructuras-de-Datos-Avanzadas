@@ -2,7 +2,7 @@
 =====================================================================================
 	=                                                                              =
 	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       dispersionBase.hpp                                    =
+	=            Archivo:       dispersionBase.hpp                                 =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         30/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =

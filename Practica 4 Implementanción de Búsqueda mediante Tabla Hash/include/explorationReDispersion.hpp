@@ -2,7 +2,7 @@
 =====================================================================================
 	=                                                                              =
 	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       dispersionBase.cpp                                 =
+	=            Archivo:       explorationReDispersion.hpp                        =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         30/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
@@ -13,45 +13,30 @@
 	=                                                                              =
 =====================================================================================
 ===================================================================================*/
-/*
-* @Author: Adrián Epifanio
-* @Date:   2020-03-31 08:19:42
-* @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-02 21:06:44
-*/
-/*----------  DECLARACION DE FUNCIONES  ----------*/
+/*----------  DECLARACION DE LIBRERIAS  ----------*/
 
-#include "../include/dispersionBase.hpp"
+#include <iostream>
 
 /*------------------------------------------------*/
 
-/**
- * @brief      Constructs a new instance.
- */
+/*----------  DECLARACION DE FUNCIONES  ----------*/
+
+#pragma once
+#include "explorationBase.hpp"
+
+/*------------------------------------------------*/
+
+ 
+
 template <class T>
-DispersionBase<T>::DispersionBase () {
+class ExplorationReDispersion : public ExplorationBase<T> {
+	
+	public:
+		// Builder & Destroyer
+		ExplorationReDispersion();
+		virtual ~ExplorationReDispersion();
 
-}
+		// Operator Overload
+		int operator() (int i, const T& data);
 
-/**
- * @brief      Destroys the object.
- */
-template <class T>
-DispersionBase<T>::~DispersionBase () {
-
-}
-
-/**
- * @brief      Searchs the cells to find one where store the data
- *
- * @param[in]  i     { parameter_description }
- * @param[in]  data  The data
- *
- * @tparam     T     The data type.
- *
- * @return     The cell position
- */
-template <class T>
-int DispersionBase<T>::operator() (const T& data) {
-
-}
+};

@@ -1,6 +1,6 @@
 #Variable objetos
-EXPLORATIONS = explorationBase.o explorationQuadratic.o explorationLinear.o explorationDouble.o
-DISPERSIONS = dispersionBase.o
+EXPLORATIONS = explorationBase.o explorationQuadratic.o explorationLinear.o explorationDouble.o explorationReDispersion.o
+DISPERSIONS = dispersionBase.o dispersionSum.o dispersionModule.o dispersionPseudoRandom.o
 OBJECTS = main.o cell.o table.o DNI.o $(EXPLORATIONS) $(DISPERSIONS)
 #Flags de compilacion
 CFLAGS = -c -std=c++17
@@ -34,8 +34,20 @@ explorationLinear.o: ../src/explorationLinear.cpp ../include/explorationLinear.h
 explorationDouble.o: ../src/explorationDouble.cpp ../include/explorationDouble.hpp
 	g++ $(CFLAGS) ../src/explorationDouble.cpp
 
+explorationReDispersion.o: ../src/explorationReDispersion.cpp ../include/explorationReDispersion.hpp
+	g++ $(CFLAGS) ../src/explorationReDispersion.cpp
+
 dispersionBase.o: ../src/dispersionBase.cpp ../include/dispersionBase.hpp
 	g++ $(CFLAGS) ../src/dispersionBase.cpp
+
+dispersionSum.o: ../src/dispersionSum.cpp ../include/dispersionSum.hpp
+	g++ $(CFLAGS) ../src/dispersionSum.cpp
+
+dispersionModule.o: ../src/dispersionModule.cpp ../include/dispersionModule.hpp
+	g++ $(CFLAGS) ../src/dispersionModule.cpp
+
+dispersionPseudoRandom.o: ../src/dispersionPseudoRandom.cpp ../include/dispersionPseudoRandom.hpp
+	g++ $(CFLAGS) ../src/dispersionPseudoRandom.cpp
 
 
 .PHONY: clean
