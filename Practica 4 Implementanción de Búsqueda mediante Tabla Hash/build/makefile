@@ -1,5 +1,7 @@
 #Variable objetos
-OBJECTS = main.o cell.o table.o DNI.o explorationBase.o dispersionBase.o
+EXPLORATIONS = explorationBase.o explorationQuadratic.o explorationLinear.o explorationDouble.o
+DISPERSIONS = dispersionBase.o
+OBJECTS = main.o cell.o table.o DNI.o $(EXPLORATIONS) $(DISPERSIONS)
 #Flags de compilacion
 CFLAGS = -c -std=c++17
 
@@ -7,7 +9,6 @@ hash: $(OBJECTS)
 	g++  $(OBJECTS) -o hash
 	mv *.o ../objects
 	mv hash ../bin
-
 
 main.o: ../src/main.cpp
 	g++ $(CFLAGS) ../src/main.cpp
@@ -23,6 +24,15 @@ DNI.o: ../src/DNI.cpp ../include/DNI.hpp
 
 explorationBase.o: ../src/explorationBase.cpp ../include/explorationBase.hpp
 	g++ $(CFLAGS) ../src/explorationBase.cpp
+
+explorationQuadratic.o: ../src/explorationQuadratic.cpp ../include/explorationQuadratic.hpp
+	g++ $(CFLAGS) ../src/explorationQuadratic.cpp
+
+explorationLinear.o: ../src/explorationLinear.cpp ../include/explorationLinear.hpp
+	g++ $(CFLAGS) ../src/explorationLinear.cpp
+
+explorationDouble.o: ../src/explorationDouble.cpp ../include/explorationDouble.hpp
+	g++ $(CFLAGS) ../src/explorationDouble.cpp
 
 dispersionBase.o: ../src/dispersionBase.cpp ../include/dispersionBase.hpp
 	g++ $(CFLAGS) ../src/dispersionBase.cpp

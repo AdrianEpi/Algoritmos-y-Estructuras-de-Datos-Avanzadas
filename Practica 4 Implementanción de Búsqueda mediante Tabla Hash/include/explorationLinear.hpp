@@ -2,7 +2,7 @@
 =====================================================================================
 	=                                                                              =
 	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       explorationBase.hpp                                    =
+	=            Archivo:       explorationLinear.hpp                              =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         30/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
@@ -22,17 +22,21 @@
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #pragma once
+#include "explorationBase.hpp"
 
 /*------------------------------------------------*/
 
-template <class T>
-class ExplorationBase {
+ 
 
+template <class T>
+class ExplorationLinear : public ExplorationBase<T> {
+	
 	public:
 		// Builder & Destroyer
-		ExplorationBase ();
-		virtual ~ExplorationBase ();
+		ExplorationLinear();
+		virtual ~ExplorationLinear();
 
 		// Operator Overload
-		virtual int operator() (int i, const T& data) = 0;
+		int operator() (int i, const T& data);
+
 };

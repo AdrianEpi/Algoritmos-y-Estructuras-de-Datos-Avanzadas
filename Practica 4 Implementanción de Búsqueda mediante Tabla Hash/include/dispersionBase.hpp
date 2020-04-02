@@ -29,8 +29,10 @@ template <class T>
 class DispersionBase {
 
 	public:
+		// Builder & Destroyer
 		DispersionBase();
 		virtual ~DispersionBase();
 
+		// Operator Overload
 		virtual int operator() (const T& data) = 0;
 };
