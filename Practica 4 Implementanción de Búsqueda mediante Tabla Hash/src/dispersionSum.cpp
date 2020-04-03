@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-02 21:02:04
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 09:10:31
+* @Last Modified time: 2020-04-03 10:46:08
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -53,5 +53,11 @@ DispersionSum<T>::~DispersionSum () {
  */
 template <class T>
 int DispersionSum<T>::operator() (const T& data) {
-
+	int d = 0;
+	unsigned long x = data;
+	while ( x > 0) {
+		d += (x % 10);
+		x /= 10;
+	}
+	//return (d %)
 }
