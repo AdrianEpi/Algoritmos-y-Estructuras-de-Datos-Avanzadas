@@ -22,7 +22,7 @@
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #pragma once
-#include "DNI.hpp"
+
 /*------------------------------------------------*/
 
 template <class T>

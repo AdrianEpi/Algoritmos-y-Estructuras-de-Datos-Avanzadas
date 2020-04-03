@@ -2,12 +2,13 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 14:20:30
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-02 21:11:21
+* @Last Modified time: 2020-04-03 19:38:59
 */
 
 #include "../include/table.hpp"
 #include "../include/DNI.hpp"
-
+#include "../include/cell.hpp"
+#include "../include/experiment.hpp"
 
 int main (void) {
 	/*
@@ -28,4 +29,6 @@ El programa principal realizará la siguiente secuencia de pasos:
 	
 
 	*/
+Table<int>* asd();
+int a = asd->get_CellNumber();
 }

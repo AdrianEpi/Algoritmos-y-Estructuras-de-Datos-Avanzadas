@@ -42,6 +42,9 @@ class DNI {
 
 		void set_Code (unsigned long code);
 
+		// Functions
+		void set_Random (void);
+
 		// Operators Overload
 		bool operator== (DNI& dni) const;
 		bool operator<= (DNI& dni) const;

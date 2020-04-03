@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-03 15:20:55
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 16:40:26
+* @Last Modified time: 2020-04-03 19:31:22
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -156,11 +156,19 @@ void Experiment::initialize(void) {
 	}
 	std::cout << std::endl << "Intoduce the charge factor: ";
 	std::cin >> aux;
-	assert(aux >= 0.0);
+	assert(aux >= 0.0 && aux <= 1.0);
 	set_CellNum(aux);
-	table_ = new Table<DNI>(get_CellNum(), get_BlockNum(), explorationSelector, dispersionSelector);
+	//table_ = new Table<DNI>(get_CellNum(), get_BlockNum(), explorationSelector, dispersionSelector);
+	//table_ -> get_CellNumber();
+	int benchSize = 2 * get_ChargeFactor() * get_CellNum() * get_BlockNum();
+	bench_.resize(benchSize);
+	for (int i = 0; i < benchSize; i++)
+		bench_[i].set_Random();
 }
 
+/**
+ * @brief      Restarts the experiment
+ */
 void Experiment::restart(void) {
 	this -> ~Experiment();
 	initialize();

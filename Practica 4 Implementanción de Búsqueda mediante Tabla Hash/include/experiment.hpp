@@ -34,7 +34,7 @@ class Experiment {
 		double chargeFactor_;
 		int tryNum_;
 		int comp[2];
-		std::vector<std::vector<DNI>> bench_;
+		std::vector<DNI> bench_;
 		Table<DNI>* table_;
 
 	public:

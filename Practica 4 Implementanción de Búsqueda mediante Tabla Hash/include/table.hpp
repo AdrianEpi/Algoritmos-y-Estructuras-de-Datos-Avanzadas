@@ -25,8 +25,6 @@
 
 #pragma once
 #include "cell.hpp"
-#include "explorationBase.hpp"
-#include "dispersionBase.hpp"
 #include "explorationLinear.hpp"
 #include "explorationQuadratic.hpp"
 #include "explorationDouble.hpp"
@@ -34,6 +32,7 @@
 #include "dispersionSum.hpp"
 #include "dispersionModule.hpp"
 #include "dispersionPseudoRandom.hpp"
+#include "DNI.hpp"
 
 /*------------------------------------------------*/
 
@@ -68,6 +67,7 @@ class Table {
 		void set_Exploracion (ExplorationBase<T>* exploration);
 
 		// Functions
+		void update (int cellNumber, int blockNumber, int explorationSelector, int dispersionSelector);
 		bool insertData (T& data) const;
 		bool searchData (T& data) const;
 

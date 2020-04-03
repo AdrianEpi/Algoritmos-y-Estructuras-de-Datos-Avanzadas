@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 17:41:42
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 16:00:26
+* @Last Modified time: 2020-04-03 17:45:09
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -73,6 +73,13 @@ unsigned long DNI::get_Code (void) const {
  */
 void DNI::set_Code (unsigned long code) {
 	code_ = code;
+}
+
+/**
+ * @brief      Sets a random code to the DNI.
+ */
+void DNI::set_Random (void) {
+	set_Code((rand() % 500000000) + 30000000);
 }
 
 /**
