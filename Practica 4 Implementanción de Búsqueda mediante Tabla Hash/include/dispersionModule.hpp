@@ -22,6 +22,7 @@
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #pragma once
+#include "dispersionBase.hpp"
 
 /*------------------------------------------------*/
 
