@@ -51,7 +51,7 @@ class Table {
 	public:
 		// Builders & Destroyer
 		Table ();
-		Table (int cellNumber, int blockNumber);
+		Table (int cellNumber, int blockNumber, int explorationSelector, int dispersionSelector);
 		~Table ();
 
 		// Getters & Setters
@@ -70,8 +70,6 @@ class Table {
 		// Functions
 		bool insertData (T& data) const;
 		bool searchData (T& data) const;
-		int selectDispersion (void) const;
-		int selectExploration (void) const;
 
 		// Read & Write
 		std::ostream write (std::ostream os) const;

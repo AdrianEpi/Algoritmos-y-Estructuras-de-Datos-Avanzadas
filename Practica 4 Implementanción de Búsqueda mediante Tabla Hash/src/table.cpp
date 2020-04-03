@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 14:20:39
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 12:06:48
+* @Last Modified time: 2020-04-03 16:26:50
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -47,12 +47,10 @@ Table<T>::Table () {
  * @tparam     T                    { description }
  */
 template <class T>
-Table<T>::Table (int cellNumber, int blockNumber) {
+Table<T>::Table (int cellNumber, int blockNumber, int explorationSelector, int dispersionSelector) {
 	assert(cellNumber > 0);
 	assert(blockNumber > 0);
 
-	int explorationSelector = selectExploration();
-	int dispersionSelector = selectDispersion();
 	set_CellNumber(cellNumber);
 	set_BlockNumber(blockNumber);
 	cells_.resize(get_CellNumber());
@@ -265,49 +263,6 @@ bool Table<T>::insertData (T& data) const {
 template <class T>
 bool Table<T>::searchData (T& data) const {
 
-}
-
-/**
- * @brief      Selects the dispersion that will be used.
- *
- * @tparam     T     { description }
- *
- * @return     Dispersion type.
- */
-template <class T>
-int Table<T>::selectDispersion (void) const {
-	int selector = 0;
-	while (selector <= 0 || selector >= 4) {
-		system("clear");
-		std::cout << std::endl << "Please select the dispersion: " << std::endl;
-		std::cout << "1. Sum Dispersion" << std::endl;
-		std::cout << "2. Module Dispersion" << std::endl;
-		std::cout << "3. PseudoRandom Dispersion" << std::endl;
-		std::cin >> selector;
-	}
-	return selector;
-}
-
-/**
- * @brief      Selects the exploration that will be used.
- *
- * @tparam     T     { description }
- *
- * @return     Exploration type.
- */
-template <class T>
-int Table<T>::selectExploration (void) const {
-	int selector = 0;
-	while (selector <= 0 || selector >= 5) {
-		system("clear");
-		std::cout << std::endl << "Please select the exploration: " << std::endl;
-		std::cout << "1. Linear Exploration" << std::endl;
-		std::cout << "2. Quadratic Exploration" << std::endl;
-		std::cout << "3. Double Exploration" << std::endl;
-		std::cout << "4. ReDispersion Exploration" << std::endl;
-		std::cin >> selector;
-	}
-	return selector;
 }
 
 template <class T>

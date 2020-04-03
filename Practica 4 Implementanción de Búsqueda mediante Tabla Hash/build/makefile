@@ -1,7 +1,7 @@
 #Variable objetos
 EXPLORATIONS = explorationBase.o explorationQuadratic.o explorationLinear.o explorationDouble.o explorationReDispersion.o
 DISPERSIONS = dispersionBase.o dispersionSum.o dispersionModule.o dispersionPseudoRandom.o
-OBJECTS = main.o cell.o table.o DNI.o $(EXPLORATIONS) $(DISPERSIONS)
+OBJECTS = main.o cell.o table.o DNI.o experiment.o $(EXPLORATIONS) $(DISPERSIONS)
 #Flags de compilacion
 CFLAGS = -c -std=c++17
 
@@ -21,6 +21,9 @@ table.o: ../src/table.cpp ../include/table.hpp
 
 DNI.o: ../src/DNI.cpp ../include/DNI.hpp
 	g++ $(CFLAGS) ../src/DNI.cpp
+
+experiment.o: ../src/experiment.cpp ../include/experiment.hpp
+	g++ $(CFLAGS) ../src/experiment.cpp
 
 explorationBase.o: ../src/explorationBase.cpp ../include/explorationBase.hpp
 	g++ $(CFLAGS) ../src/explorationBase.cpp

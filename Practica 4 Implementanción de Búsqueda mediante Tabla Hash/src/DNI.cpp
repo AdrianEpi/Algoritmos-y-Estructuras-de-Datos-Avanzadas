@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 17:41:42
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-31 09:08:24
+* @Last Modified time: 2020-04-03 16:00:26
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -136,6 +136,7 @@ bool DNI::operator!= (DNI& dni) const {
  */
 DNI& DNI::operator= (DNI& dni) {
 	set_Code(dni.get_Code());
+	return *this;
 }
 
 /**

@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-02 20:51:29
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 15:12:28
+* @Last Modified time: 2020-04-03 16:38:24
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -79,5 +79,4 @@ unsigned ExplorationDouble<T>::findPrime(unsigned number) {
 		if (prime == true)
 			return i;
 	}
-
 }
