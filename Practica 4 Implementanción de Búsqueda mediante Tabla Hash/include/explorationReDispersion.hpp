@@ -37,6 +37,6 @@ class ExplorationReDispersion : public ExplorationBase<T> {
 		virtual ~ExplorationReDispersion();
 
 		// Operator Overload
-		int operator() (int i, const T& data);
+		int operator() (int size, int pos, const T& data);
 
 };

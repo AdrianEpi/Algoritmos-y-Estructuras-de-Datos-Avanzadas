@@ -35,5 +35,5 @@ class DispersionPseudoRandom : public DispersionBase<T> {
 		virtual ~DispersionPseudoRandom();
 
 		// Operator Overload
-		int operator() (const T& data) = 0;
+		int operator() (const T& data, int size);
 };

@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-02 21:02:46
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 09:08:45
+* @Last Modified time: 2020-04-03 14:34:15
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -44,14 +44,14 @@ DispersionModule<T>::~DispersionModule () {
 /**
  * @brief      Searchs the cells to find one where store the data
  *
- * @param[in]  i     { parameter_description }
  * @param[in]  data  The data
+ * @param[in]  size  The size
  *
  * @tparam     T     The data type.
  *
  * @return     The cell position
  */
 template <class T>
-int DispersionModule<T>::operator() (const T& data) {
-
+int DispersionModule<T>::operator() (const T& data, int size) {
+	return data.get_Code() % size;
 }

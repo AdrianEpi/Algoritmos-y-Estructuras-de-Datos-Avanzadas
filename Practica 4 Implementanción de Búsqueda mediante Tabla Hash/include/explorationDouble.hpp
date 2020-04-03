@@ -30,13 +30,15 @@
 
 template <class T>
 class ExplorationDouble : public ExplorationBase<T> {
-	
+	private:
+		unsigned findPrime(unsigned prime);
+
 	public:
 		// Builder & Destroyer
 		ExplorationDouble();
 		virtual ~ExplorationDouble();
 
 		// Operator Overload
-		int operator() (int i, const T& data);
+		int operator() (int size, int pos, const T& data);
 
 };

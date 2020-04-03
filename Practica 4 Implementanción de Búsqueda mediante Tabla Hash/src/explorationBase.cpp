@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-31 08:19:42
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-03-31 10:09:33
+* @Last Modified time: 2020-04-03 15:05:29
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -44,7 +44,8 @@ ExplorationBase<T>::~ExplorationBase () {
 /**
  * @brief      Searchs the cells to find one where store the data
  *
- * @param[in]  i     { parameter_description }
+ * @param[in]  size  The size
+ * @param[in]  pos   The position
  * @param[in]  data  The data
  *
  * @tparam     T     The data type.
@@ -52,6 +53,6 @@ ExplorationBase<T>::~ExplorationBase () {
  * @return     The cell position
  */
 template <class T>
-int ExplorationBase<T>::operator() (int i, const T& data) {
+int ExplorationBase<T>::operator() (int size, int pos, const T& data) {
 
 }

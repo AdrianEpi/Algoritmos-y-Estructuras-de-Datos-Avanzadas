@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-31 08:19:42
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-02 21:06:44
+* @Last Modified time: 2020-04-03 14:21:36
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -44,14 +44,14 @@ DispersionBase<T>::~DispersionBase () {
 /**
  * @brief      Searchs the cells to find one where store the data
  *
- * @param[in]  i     { parameter_description }
  * @param[in]  data  The data
+ * @param[in]  size  The size
  *
  * @tparam     T     The data type.
  *
  * @return     The cell position
  */
 template <class T>
-int DispersionBase<T>::operator() (const T& data) {
+int DispersionBase<T>::operator() (const T& data, int size) {
 
 }

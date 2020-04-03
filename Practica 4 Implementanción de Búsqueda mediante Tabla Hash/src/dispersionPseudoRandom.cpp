@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-02 21:03:41
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 09:10:23
+* @Last Modified time: 2020-04-03 14:32:55
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -44,14 +44,16 @@ DispersionPseudoRandom<T>::~DispersionPseudoRandom () {
 /**
  * @brief      Searchs the cells to find one where store the data
  *
- * @param[in]  i     { parameter_description }
  * @param[in]  data  The data
+ * @param[in]  size  The size
  *
  * @tparam     T     The data type.
  *
  * @return     The cell position
  */
 template <class T>
-int DispersionPseudoRandom<T>::operator() (const T& data) {
-
+int DispersionPseudoRandom<T>::operator() (const T& data, int size) {
+	//srand(time(NULL));
+	srand(data.get_Code());
+	return (rand() % size);
 }

@@ -35,5 +35,5 @@ class DispersionModule : public DispersionBase<T> {
 		virtual ~DispersionModule();
 
 		// Operator Overload
-		int operator() (const T& data) = 0;
+		int operator() (const T& data, int size);
 };

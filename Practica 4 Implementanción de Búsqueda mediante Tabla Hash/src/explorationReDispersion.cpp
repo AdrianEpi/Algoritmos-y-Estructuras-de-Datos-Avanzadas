@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-02 20:59:06
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 09:07:23
+* @Last Modified time: 2020-04-03 15:10:14
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -42,6 +42,6 @@ ExplorationReDispersion<T>::~ExplorationReDispersion() {
 }
 
 template <class T>
-int ExplorationReDispersion<T>::operator() (int i, const T& data) {
-
+int ExplorationReDispersion<T>::operator() (int size, int pos, const T& data) {
+	return ((rand() + pos) % size);
 }

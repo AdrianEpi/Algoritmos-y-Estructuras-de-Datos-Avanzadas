@@ -37,6 +37,6 @@ class ExplorationLinear : public ExplorationBase<T> {
 		virtual ~ExplorationLinear();
 
 		// Operator Overload
-		int operator() (int i, const T& data);
+		int operator() (int size, int pos, const T& data);
 
 };

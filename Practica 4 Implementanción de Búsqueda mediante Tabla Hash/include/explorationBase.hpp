@@ -34,5 +34,5 @@ class ExplorationBase {
 		virtual ~ExplorationBase ();
 
 		// Operator Overload
-		virtual int operator() (int i, const T& data) = 0;
+		virtual int operator() (int size, int pos, const T& data) = 0;
 };

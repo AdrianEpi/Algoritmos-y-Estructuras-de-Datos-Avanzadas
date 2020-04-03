@@ -35,5 +35,5 @@ class DispersionSum : public DispersionBase<T> {
 		virtual ~DispersionSum();
 
 		// Operator Overload
-		int operator() (const T& data) = 0;
+		int operator() (const T& data, int size);
 };

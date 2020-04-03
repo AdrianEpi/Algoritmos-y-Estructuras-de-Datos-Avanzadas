@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-02 21:02:04
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 10:46:08
+* @Last Modified time: 2020-04-03 14:33:11
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -44,20 +44,20 @@ DispersionSum<T>::~DispersionSum () {
 /**
  * @brief      Searchs the cells to find one where store the data
  *
- * @param[in]  i     { parameter_description }
  * @param[in]  data  The data
+ * @param[in]  size  The size
  *
  * @tparam     T     The data type.
  *
  * @return     The cell position
  */
 template <class T>
-int DispersionSum<T>::operator() (const T& data) {
+int DispersionSum<T>::operator() (const T& data, int size) {
 	int d = 0;
-	unsigned long x = data;
+	unsigned long x = data.get_Code();
 	while ( x > 0) {
 		d += (x % 10);
 		x /= 10;
 	}
-	//return (d %)
+	return (d % size);
 }

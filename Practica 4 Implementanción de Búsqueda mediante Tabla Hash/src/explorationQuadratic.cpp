@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-02 20:47:17
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 09:06:14
+* @Last Modified time: 2020-04-03 15:08:58
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -41,7 +41,18 @@ ExplorationQuadratic<T>::~ExplorationQuadratic() {
 
 }
 
+/**
+ * @brief      Function call operator.
+ *
+ * @param[in]  size  The size
+ * @param[in]  pos   The position
+ * @param[in]  data  The data
+ *
+ * @tparam     T     The data type
+ *
+ * @return     The result of the function call
+ */
 template <class T>
-int ExplorationQuadratic<T>::operator() (int i, const T& data) {
-
+int ExplorationQuadratic<T>::operator() (int size, int pos, const T& data) {
+	return ((data.get_Code() + pow(pos, 2)) % size);
 }

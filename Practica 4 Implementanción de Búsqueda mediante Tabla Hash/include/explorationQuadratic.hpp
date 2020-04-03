@@ -16,6 +16,7 @@
 /*----------  DECLARACION DE LIBRERIAS  ----------*/
 
 #include <iostream>
+#include <cmath>
 
 /*------------------------------------------------*/
 
@@ -37,6 +38,6 @@ class ExplorationQuadratic : public ExplorationBase<T> {
 		virtual ~ExplorationQuadratic();
 
 		// Operator Overload
-		int operator() (int i, const T& data);
+		int operator() (int size, int pos, const T& data);
 
 };

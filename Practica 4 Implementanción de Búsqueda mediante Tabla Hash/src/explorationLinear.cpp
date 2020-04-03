@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-02 20:51:19
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 09:05:38
+* @Last Modified time: 2020-04-03 15:07:09
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -41,7 +41,18 @@ ExplorationLinear<T>::~ExplorationLinear() {
 
 }
 
+/**
+ * @brief      Function call operator.
+ *
+ * @param[in]  size  The size
+ * @param[in]  pos   The position
+ * @param[in]  data  The data
+ *
+ * @tparam     T     The data type.
+ *
+ * @return     The result of the function call
+ */
 template <class T>
-int ExplorationLinear<T>::operator() (int i, const T& data) {
-
+int ExplorationLinear<T>::operator() (int size, int pos, const T& data) {
+	return ((data.get_Code() + pos) % size);
 }

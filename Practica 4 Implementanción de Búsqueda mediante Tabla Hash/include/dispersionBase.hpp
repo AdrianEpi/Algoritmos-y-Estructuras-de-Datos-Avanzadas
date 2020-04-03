@@ -34,5 +34,5 @@ class DispersionBase {
 		virtual ~DispersionBase();
 
 		// Operator Overload
-		virtual int operator() (const T& data) = 0;
+		virtual int operator() (const T& data, int size) = 0;
 };
