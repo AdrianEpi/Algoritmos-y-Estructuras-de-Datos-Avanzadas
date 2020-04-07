@@ -1,10 +1,10 @@
 /*===================================================================================
 =====================================================================================
 	=                                                                              =
-	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       explorationBase.hpp                                    =
+	=            Proyecto:      Práctica 3 El juego de la vida generalizado        =
+	=            Archivo:       celula3.hpp                                        =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
-	=            Fecha:         30/03/2020                                         =
+	=            Fecha:         16/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
 	=            Lenguaje:      C++                                                =
 	=            Correo:        alu0101158280@ull.edu.es                           =
@@ -22,49 +22,27 @@
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #pragma once
+#include "celula.hpp"
 
 /*------------------------------------------------*/
 
-template <class T>
-class ExplorationBase {
+class Tablero;
+
+class Celula3 : public Celula {
 
 	public:
-		// Builder & Destroyer
-		ExplorationBase();
-		virtual ~ExplorationBase();
+		// Builders & Destroyer
+		Celula3 ();
+		Celula3 (int i, int j);
+		~Celula3 ();
 
-		// Function
-		virtual unsigned explorate(const T& data, unsigned pos, unsigned size)=0;
+		// Getters & Setters
+		int getEstado (void) const;
+
+		// Functions
+    	int contarVecinas (const Tablero& board);
+    	int actualizarEstado (void); 
+
+    	// Read & Write
+    	std::ostream& mostrar (std::ostream& os) const;
 };
-
-/**
- * @brief      Constructs a new instance.
- */
-template <class T>
-ExplorationBase<T>::ExplorationBase () {
-
-}
-
-/**
- * @brief      Destroys the object.
- */
-template <class T>
-ExplorationBase<T>::~ExplorationBase () {
-
-}
-
-/**
- * @brief      Searchs the cells to find one where store the data
- *
- * @param[in]  size  The size
- * @param[in]  pos   The position
- * @param[in]  data  The data
- *
- * @tparam     T     The data type.
- *
- * @return     The cell position
- */
-template <class T>
-unsigned ExplorationBase<T>::explorate (const T& data, unsigned pos, unsigned size) {
-
-}

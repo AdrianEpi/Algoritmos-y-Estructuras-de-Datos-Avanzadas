@@ -1,10 +1,10 @@
 /*===================================================================================
 =====================================================================================
 	=                                                                              =
-	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       dispersionBase.hpp                                 =
+	=            Proyecto:      Práctica 3 El juego de la vida generalizado        =
+	=            Archivo:       celula1.hpp                                        =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
-	=            Fecha:         30/03/2020                                         =
+	=            Fecha:         16/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
 	=            Lenguaje:      C++                                                =
 	=            Correo:        alu0101158280@ull.edu.es                           =
@@ -22,49 +22,27 @@
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #pragma once
+#include "celula.hpp"
 
 /*------------------------------------------------*/
 
-template <class T>
-class DispersionBase {
+class Tablero;
+
+class Celula1 : public Celula {
 
 	public:
-		// Builder & Destroyer
-		DispersionBase ();
-		virtual ~DispersionBase ();
+		// Builders & Destroyer
+		Celula1 ();
+		Celula1 (int i, int j);
+		~Celula1 ();
 
-		// Function
-		virtual unsigned disperse (T& data, unsigned size) = 0;
-		
+		// Getters & Setters
+		int getEstado (void) const;
+
+		// Functions
+    	int contarVecinas (const Tablero& board);
+    	int actualizarEstado (void); 
+
+    	// Read & Write
+    	std::ostream& mostrar (std::ostream& os) const;
 };
-
-/**
- * @brief      Constructs a new instance.
- */
-template <class T>
-DispersionBase<T>::DispersionBase () {
-
-}
-
-/**
- * @brief      Destroys the object.
- */
-template <class T>
-DispersionBase<T>::~DispersionBase () {
-
-}
-
-/**
- * @brief      Searchs the cells to find one where store the data
- *
- * @param[in]  data  The data
- * @param[in]  size  The size
- *
- * @tparam     T     The data type.
- *
- * @return     The cell position
- */
-template <class T>
-unsigned DispersionBase<T>::disperse (T& data, unsigned size) {
-
-}

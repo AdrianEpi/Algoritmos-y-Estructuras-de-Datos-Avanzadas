@@ -1,10 +1,10 @@
 /*===================================================================================
 =====================================================================================
 	=                                                                              =
-	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       explorationReDispersion.hpp                        =
+	=            Proyecto:      Práctica 3 El juego de la vida generalizado        =
+	=            Archivo:       celula.hpp                                         =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
-	=            Fecha:         30/03/2020                                         =
+	=            Fecha:         16/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
 	=            Lenguaje:      C++                                                =
 	=            Correo:        alu0101158280@ull.edu.es                           =
@@ -15,59 +15,46 @@
 ===================================================================================*/
 /*----------  DECLARACION DE LIBRERIAS  ----------*/
 
-#include <cstdlib>
+#include <iostream>
 
 /*------------------------------------------------*/
 
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #pragma once
-#include "explorationBase.hpp"
-
+#include "tablero.hpp"
 /*------------------------------------------------*/
 
-template <class T>
-class ExplorationReDispersion : public ExplorationBase<T> {
+class Tablero;
+
+class Celula 
+{
+	
+	private:
+		std::pair<int, int> posicion_; // (i, j)
+		int num_vecinas_vivas_;
+
 
 	public:
-		// Builder & Destroyer
-		ExplorationReDispersion();
-		virtual ~ExplorationReDispersion();
+		// Builders & Destroyer
+		Celula ();
+		Celula (int i, int j);
+		Celula (int estado, int i, int j);
+		~Celula ();
 
-		// Function
-		unsigned explorate(const T& data, unsigned pos, unsigned size);
+		// Getters & Setters
+		std::pair<int, int> get_Posicion (void) const;
+		int get_VecinasVivas (void) const;
+		virtual int getEstado () const;
+
+		void set_Posicion (std::pair<int, int> pos);
+		void set_Posicion (int i, int j);
+		void set_VecinasVivas (int num);
+
+		// Functions
+		static Celula* createCelula (int estado, int i, int j);
+		virtual int contarVecinas (const Tablero& board);
+		virtual int actualizarEstado (void); // Reglas de nacimiento
+		virtual std::ostream& mostrar (std::ostream&) const;
 };
-
-
-/**
- * @brief      Constructs a new instance.
- */
-template <class T>
-ExplorationReDispersion<T>::ExplorationReDispersion () {
-
-}
-
-/**
- * @brief      Destroys the object.
- */
-template <class T>
-ExplorationReDispersion<T>::~ExplorationReDispersion () {
-
-}
-
-/**
- * @brief      Searchs the cells to find one where store the data
- *
- * @param[in]  size  The size
- * @param[in]  pos   The position
- * @param[in]  data  The data
- *
- * @tparam     T     The data type.
- *
- * @return     The cell position
- */
-template <class T>
-unsigned ExplorationReDispersion<T>::explorate (const T& data, unsigned pos, unsigned size) {
-	return ((rand() + pos) % size);
-}
 

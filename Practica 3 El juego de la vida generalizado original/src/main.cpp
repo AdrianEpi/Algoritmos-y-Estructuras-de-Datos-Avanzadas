@@ -1,10 +1,10 @@
 /*===================================================================================
 =====================================================================================
 	=                                                                              =
-	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       dispersionSum.hpp                                  =
+	=            Proyecto:      Práctica 3 El juego de la vida generalizado        =
+	=            Archivo:       main.cpp                                           =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
-	=            Fecha:         30/03/2020                                         =
+	=            Fecha:         16/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
 	=            Lenguaje:      C++                                                =
 	=            Correo:        alu0101158280@ull.edu.es                           =
@@ -13,6 +13,12 @@
 	=                                                                              =
 =====================================================================================
 ===================================================================================*/
+/*
+* @Author: Adrián Epifanio
+* @Date:   2020-03-02 08:56:58
+* @Last Modified by:   Adrián Epifanio
+* @Last Modified time: 2020-03-20 11:25:11
+*/
 /*----------  DECLARACION DE LIBRERIAS  ----------*/
 
 #include <iostream>
@@ -21,57 +27,24 @@
 
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
-#pragma once
-#include "dispersionBase.hpp"
+#include "../include/tablero.hpp"
 
 /*------------------------------------------------*/
 
-template <class T>
-class DispersionSum : public DispersionBase<T> {
-
-	public:
-		// Builder & Destroyer
-		DispersionSum ();
-		virtual ~DispersionSum ();
-
-		// Function
-		unsigned disperse (T& data, unsigned size);
+/**
+ * @brief      Main program
+ */
+int main() {
+	int filas = 0;
+	int columnas = 0;
+	int turnos = 1;
+	std::cout << "Indique la cantidad de filas: ";
+	std::cin >> filas;
+	std::cout << "Indique la cantidad de columnas: ";
+	std::cin >> columnas;
+	std::cout << "Indique la cantidad de turnos del juego: ";
+	std::cin >> turnos;
+	Tablero juego(filas, columnas, turnos);
 };
-
-
-/**
- * @brief      Constructs a new instance.
- */
-template <class T>
-DispersionSum<T>::DispersionSum () {
-
-}
-
-/**
- * @brief      Destroys the object.
- */
-template <class T>
-DispersionSum<T>::~DispersionSum () {
-
-}
-
-/**
- * @brief      Searchs the cells to find one where store the data
- *
- * @param[in]  data  The data
- * @param[in]  size  The size
- *
- * @tparam     T     The data type.
- *
- * @return     The cell position
- */
-template <class T>
-unsigned DispersionSum<T>::disperse(T& data, unsigned size) {
-	int d = 0;
-	unsigned long x = data.get_Code();
-	while (x > 0) {
-		d += (x % 10);
-		x /= 10;
-	}
-	return (d % size);
-}
+// Prueba de ejecución
+// 20 20 20 5 1 10 10 1 10 11 1 11 11 1 12 11 1 11 12

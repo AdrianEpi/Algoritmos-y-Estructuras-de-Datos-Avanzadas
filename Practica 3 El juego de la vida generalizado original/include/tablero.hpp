@@ -1,10 +1,10 @@
 /*===================================================================================
 =====================================================================================
 	=                                                                              =
-	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       dispersionPseudoRandom.hpp                         =
+	=            Proyecto:      Práctica 3 El juego de la vida generalizado        =
+	=            Archivo:       tablero.hpp                                        =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
-	=            Fecha:         30/03/2020                                         =
+	=            Fecha:         16/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
 	=            Lenguaje:      C++                                                =
 	=            Correo:        alu0101158280@ull.edu.es                           =
@@ -15,57 +15,59 @@
 ===================================================================================*/
 /*----------  DECLARACION DE LIBRERIAS  ----------*/
 
-#include <cstdlib>
+#include <vector>
+#include <cassert>
 
 /*------------------------------------------------*/
 
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #pragma once
-#include "dispersionBase.hpp"
+#include "celula.hpp"
+
 
 /*------------------------------------------------*/
 
-template <class T>
-class DispersionPseudoRandom : public DispersionBase<T> {
+class Celula;
+
+class Tablero
+{
+	private:
+		// Attribs
+		Celula** malla_;
+		unsigned turnos_total_;
+		unsigned turno_actual_;
+		unsigned columnas_;
+		unsigned filas_;
+		int cambianEstado;
+
 	public:
-		// Builder & Destroyer
-		DispersionPseudoRandom ();
-		virtual ~DispersionPseudoRandom ();
+		// Builders & Destroyer
+		Tablero ();
+		Tablero (int N, int M, int turnos);
+		~Tablero ();
 
-		// Function
-		unsigned disperse (T& data, unsigned size);
+		// Getters & Setters
+		Celula** get_Malla (void) const;
+		unsigned get_TurnosTotal (void);
+		unsigned get_TurnoActual (void);
+		unsigned get_Columnas (void) const;
+		unsigned get_Filas (void);
+
+		void set_Malla (Celula** malla);
+		void set_TurnosTotal (int turno);
+		void set_TurnoActual (int turno);
+		void set_Columnas (int columna);
+		void set_Filas (int filas);		
+
+		// Functions
+		void actualizarCelula (int estado, int i, int j);
+		void crearCelulasInicio (void);
+		void inicializar (int N, int M, int turnos);
+
+		void juegoDeLaVida (void);
+		void siguienteTurno (void);
+
+		// Write
+		void write (void);
 };
-
-/**
- * @brief      Constructs a new instance.
- */
-template <class T>
-DispersionPseudoRandom<T>::DispersionPseudoRandom () {
-
-}
-
-/**
- * @brief      Destroys the object.
- */
-template <class T>
-DispersionPseudoRandom<T>::~DispersionPseudoRandom () {
-
-}
-
-/**
- * @brief      Searchs the cells to find one where store the data
- *
- * @param[in]  data  The data
- * @param[in]  size  The size
- *
- * @tparam     T     The data type.
- *
- * @return     The cell position
- */
-template <class T>
-unsigned DispersionPseudoRandom<T>::disperse (T& data, unsigned size) {
-	srand(unsigned(data.get_Code()));
-	return rand() % size;
-}
-
