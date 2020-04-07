@@ -16,6 +16,7 @@
 /*----------  DECLARACION DE LIBRERIAS  ----------*/
 
 #include <iostream>
+#include <iomanip>
 
 /*------------------------------------------------*/
 
@@ -27,33 +28,32 @@
 
 class DNI {
 
-	private:	
-		unsigned long code_;
-
+	private:
+		int code_;
+		
 	public:
 		// Builders & Destroyer
-		DNI ();
-		DNI (unsigned long code);
-		DNI (DNI& copy);
-		~DNI ();
-
-		// Getters & Setters
-		unsigned long get_Code (void) const;
-
-		void set_Code (unsigned long code);
-
-		// Functions
-		void set_Random (void);
-
+		 DNI ();
+		 DNI (unsigned value);
+		 DNI (DNI& copy);
+		 ~DNI ();
+		
+		// Getter & Setter
+		int get_Code (void) const;
+		void set_Code (int code);
+		
 		// Operators Overload
-		bool operator== (DNI& dni) const;
+		unsigned operator % (unsigned n);
+		bool operator== (DNI& number) const;
 		bool operator<= (DNI& dni) const;
 		bool operator>= (DNI& dni) const;
 		bool operator!= (DNI& dni) const;
+		bool operator== (int number) const;
 		DNI& operator= (DNI& dni);
 		operator unsigned long ();
 		
 		// Read & Write
-		std::ostream write (std::ostream os) const;
-
+		std::ostream& write (std::ostream& os) const;
 };
+
+

@@ -30,9 +30,41 @@ class ExplorationBase {
 
 	public:
 		// Builder & Destroyer
-		ExplorationBase ();
-		virtual ~ExplorationBase ();
+		ExplorationBase();
+		virtual ~ExplorationBase();
 
-		// Operator Overload
-		virtual int operator() (int size, int pos, const T& data) = 0;
+		// Function
+		virtual unsigned explorate(const T& data, unsigned pos, unsigned size)=0;
 };
+
+/**
+ * @brief      Constructs a new instance.
+ */
+template <class T>
+ExplorationBase<T>::ExplorationBase () {
+
+}
+
+/**
+ * @brief      Destroys the object.
+ */
+template <class T>
+ExplorationBase<T>::~ExplorationBase () {
+
+}
+
+/**
+ * @brief      Searchs the cells to find one where store the data
+ *
+ * @param[in]  size  The size
+ * @param[in]  pos   The position
+ * @param[in]  data  The data
+ *
+ * @tparam     T     The data type.
+ *
+ * @return     The cell position
+ */
+template <class T>
+unsigned ExplorationBase<T>::explorate (const T& data, unsigned pos, unsigned size) {
+
+}

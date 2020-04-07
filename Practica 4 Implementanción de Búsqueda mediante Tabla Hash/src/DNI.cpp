@@ -17,14 +17,13 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 17:41:42
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 17:45:09
+* @Last Modified time: 2020-04-07 17:48:19
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #include "../include/DNI.hpp"
 
-/*------------------------------------------------*/
-
+/*------------------------------------------------*/ 
 /**
  * @brief      Constructs a new instance.
  */
@@ -37,7 +36,7 @@ DNI::DNI () {
  *
  * @param[in]  code  The code
  */
-DNI::DNI (unsigned long code) {
+DNI::DNI (unsigned code) {
 	set_Code (code);
 }
 
@@ -54,7 +53,7 @@ DNI::DNI (DNI& copy) {
  * @brief      Destroys the object.
  */
 DNI::~DNI () {
-
+	set_Code(0);
 }
 
 /**
@@ -62,7 +61,7 @@ DNI::~DNI () {
  *
  * @return     The code.
  */
-unsigned long DNI::get_Code (void) const {
+int DNI::get_Code (void) const {
 	return code_;
 }
 
@@ -71,17 +70,20 @@ unsigned long DNI::get_Code (void) const {
  *
  * @param[in]  code  The code
  */
-void DNI::set_Code (unsigned long code) {
+void DNI::set_Code (int code) {
 	code_ = code;
 }
 
 /**
- * @brief      Sets a random code to the DNI.
+ * @brief      Modulus operator.
+ *
+ * @param[in]  n     number
+ *
+ * @return     The result of the modulus
  */
-void DNI::set_Random (void) {
-	set_Code((rand() % 500000000) + 30000000);
+unsigned DNI::operator% (unsigned number) {
+	return code_ % number; 
 }
-
 /**
  * @brief      Equality operator.
  *
@@ -147,6 +149,18 @@ DNI& DNI::operator= (DNI& dni) {
 }
 
 /**
+ * @brief      Equality operator.
+ *
+ * @param[in]  code  The code
+ *
+ * @return     The result of the equality
+ */
+bool DNI::operator== (int code) const {
+	if (get_Code() == code)
+		return true;
+	return false;
+}
+/**
  * @brief      USnsigned long operator.
  *
  * @return     The result of the assignment
@@ -155,15 +169,14 @@ DNI::operator unsigned long () {
 	return get_Code();
 }
 
-
-
 /**
  * @brief      Writes the DNI by console
  *
- * @param[in]  os    The ouput stream
+ * @param[in]  os    The output stream
  *
  * @return     The stream
  */
-std::ostream DNI::write (std::ostream os) const {
+std::ostream& DNI::write (std::ostream& os) const {
 	os << get_Code();
+	return os;
 }

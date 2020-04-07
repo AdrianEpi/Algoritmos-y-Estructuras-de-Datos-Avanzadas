@@ -25,15 +25,44 @@
 #include "dispersionBase.hpp"
 
 /*------------------------------------------------*/
-
 template <class T>
 class DispersionModule : public DispersionBase<T> {
-
 	public:
 		// Builder & Destroyer
-		DispersionModule();
-		virtual ~DispersionModule();
+		DispersionModule ();
+		virtual ~DispersionModule ();
 
-		// Operator Overload
-		int operator() (const T& data, int size);
+		// Function
+		unsigned disperse (T& data, unsigned size);
 };
+
+/**
+ * @brief      Constructs a new instance.
+ */
+template <class T>
+DispersionModule<T>::DispersionModule () {
+
+}
+
+/**
+ * @brief      Destroys the object.
+ */
+template <class T>
+DispersionModule<T>::~DispersionModule () {
+
+}
+
+/**
+ * @brief      Searchs the cells to find one where store the data
+ *
+ * @param[in]  data  The data
+ * @param[in]  size  The size
+ *
+ * @tparam     T     The data type.
+ *
+ * @return     The cell position
+ */
+template <class T>
+unsigned DispersionModule<T>::disperse (T& data, unsigned size) {
+	return data % size;
+}

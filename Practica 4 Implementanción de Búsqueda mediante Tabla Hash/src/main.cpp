@@ -1,34 +1,51 @@
+/*===================================================================================
+=====================================================================================
+	=                                                                              =
+	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
+	=            Archivo:       main.cpp                                           =
+	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
+	=            Fecha:         30/03/2020                                         =
+	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
+	=            Lenguaje:      C++                                                =
+	=            Correo:        alu0101158280@ull.edu.es                           =
+	=            Lugar:         Universidad De La Laguna                           =
+	=                           Escuela Superior de Ingeniería y Tecnología        =
+	=                                                                              =
+=====================================================================================
+===================================================================================*/
 /*
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 14:20:30
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-03 19:38:59
+* @Last Modified time: 2020-04-07 18:15:03
 */
+/*----------  DECLARACION DE LIBRERIAS  ----------*/
 
+#include <iostream>
+#include <cstdlib>
+
+/*------------------------------------------------*/
+
+/*----------  DECLARACION DE FUNCIONES  ----------*/
+
+#include "../include/cell.hpp"
 #include "../include/table.hpp"
 #include "../include/DNI.hpp"
-#include "../include/cell.hpp"
 #include "../include/experiment.hpp"
 
-int main (void) {
-	/*
-El programa principal realizará la siguiente secuencia de pasos:
-	Solicita los parámetros para crear una tabla hash:
-		a. Número de celdas, nCeldas. El número de posiciones de la tabla hash.
-		b. Tamaño de la celda, nClaves. El número de claves que se pueden almacenar en
-			cada celda.
-		c. Función de dispersión, fDispersion. Opciones: módulo, suma y pseudoaleatoria.
-		d. Función de exploración, fExploracion. Opciones: lineal, cuadrática, dispersión
-			doble y re-dispersión
-	2. Solicita los parámetros del experimento:
-		a. Factor de carga, factor. Valor entre 0 y 1 que se corresponde al cociente entre el
-			número de valores de clave almacenados y el número de valores que es posible
-			almacenar en la tabla.
-		b. Número de pruebas, nPruebas. Número de repeticiones de la operación, inserción
-			o búsqueda, que se realiza en el experimento.
-	
+/*------------------------------------------------*/
 
-	*/
-Table<int>* asd();
-int a = asd->get_CellNumber();
+/**
+ * 
+ * @brief      Main function
+ *
+ * @return     0 when program ends
+ */
+int main(void) {
+
+	Experiment* Exp = new Experiment();
+	Exp -> initialize();
+	Exp -> loadData();
+	Exp -> write();
+	return 0;
 }

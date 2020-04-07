@@ -26,19 +26,76 @@
 
 /*------------------------------------------------*/
 
- 
-
 template <class T>
 class ExplorationDouble : public ExplorationBase<T> {
-	private:
-		unsigned findPrime(unsigned prime);
+
 
 	public:
 		// Builder & Destroyer
 		ExplorationDouble();
 		virtual ~ExplorationDouble();
 
-		// Operator Overload
-		int operator() (int size, int pos, const T& data);
+		// Functions
+		unsigned explorate(const T& data, unsigned pos, unsigned size);
+		unsigned findPrime(unsigned number);
 
 };
+
+
+/**
+ * @brief      Constructs a new instance.
+ */
+template <class T>
+ExplorationDouble<T>::ExplorationDouble () {
+
+}
+
+/**
+ * @brief      Destroys the object.
+ */
+template <class T>
+ExplorationDouble<T>::~ExplorationDouble () {
+
+}
+
+/**
+ * @brief      Searchs the cells to find one where store the data
+ *
+ * @param[in]  size  The size
+ * @param[in]  pos   The position
+ * @param[in]  data  The data
+ *
+ * @tparam     T     The data type.
+ *
+ * @return     The cell position
+ */
+template <class T>
+unsigned ExplorationDouble<T>::explorate (const T& data, unsigned pos, unsigned size) {
+	unsigned prime = findPrime(data.get_Code());
+	int fx = prime - (data.get_Code() % prime);
+	return ((data.get_Code() + pos * fx) % size);
+}
+
+
+/**
+ * @brief      Finds a the biggest prime number.
+ *
+ * @param[in]  number  The number
+ *
+ * @tparam     T       The data type
+ *
+ * @return     The prime number
+ */
+template <class T>
+unsigned ExplorationDouble<T>::findPrime(unsigned number) {
+	bool prime;
+	for (unsigned i = (number - 1); i > 2; i--) {
+		prime = true;
+		for (int j = 2; j < i; j++)
+			if ((i % j) != 0)
+				prime = false;
+		
+		if (prime == true)
+			return i;
+	}
+}

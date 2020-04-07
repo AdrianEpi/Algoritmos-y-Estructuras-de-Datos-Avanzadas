@@ -30,9 +30,41 @@ class DispersionBase {
 
 	public:
 		// Builder & Destroyer
-		DispersionBase();
-		virtual ~DispersionBase();
+		DispersionBase ();
+		virtual ~DispersionBase ();
 
-		// Operator Overload
-		virtual int operator() (const T& data, int size) = 0;
+		// Function
+		virtual unsigned disperse (T& data, unsigned size) = 0;
+		
 };
+
+/**
+ * @brief      Constructs a new instance.
+ */
+template <class T>
+DispersionBase<T>::DispersionBase () {
+
+}
+
+/**
+ * @brief      Destroys the object.
+ */
+template <class T>
+DispersionBase<T>::~DispersionBase () {
+
+}
+
+/**
+ * @brief      Searchs the cells to find one where store the data
+ *
+ * @param[in]  data  The data
+ * @param[in]  size  The size
+ *
+ * @tparam     T     The data type.
+ *
+ * @return     The cell position
+ */
+template <class T>
+unsigned DispersionBase<T>::disperse (T& data, unsigned size) {
+
+}

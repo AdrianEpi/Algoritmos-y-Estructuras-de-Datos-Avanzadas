@@ -2,7 +2,7 @@
 =====================================================================================
 	=                                                                              =
 	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       experiment.hpp                                     =
+	=            Archivo:       explorationBase.hpp                                    =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         30/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
@@ -15,7 +15,10 @@
 ===================================================================================*/
 /*----------  DECLARACION DE LIBRERIAS  ----------*/
 
-#include <iostream>
+#include <cstdlib>
+#include <cmath>
+#include <cstring>
+#include <iomanip>
 
 /*------------------------------------------------*/
 
@@ -26,29 +29,37 @@
 
 /*------------------------------------------------*/
 
-class Experiment {
+#define MAXTEST 1000
 
+class Experiment {
+	
 	private:
-		int cellNum_;
-		int blockNum_;
+		int dispersionSelector_;
+		int explorationSelector_;
+		unsigned cellNum_;
+		unsigned blockNum_;
 		double chargeFactor_;
-		int tryNum_;
-		int comp[2];
-		std::vector<DNI> bench_;
+		unsigned tryNum_;
+		int saver_[2]; // Save max and min ammounts for testing
+		DNI** bench_;
 		Table<DNI>* table_;
 
 	public:
-		// Builder & Destroyer
 		Experiment ();
 		~Experiment ();
 
 		// Getters & Setters
+		int get_DispersionSelector (void) const;
+		int get_ExplorationSelector (void) const;
 		int get_CellNum (void) const;
 		int get_BlockNum (void) const;
 		double get_ChargeFactor (void) const;
 		int get_TryNum (void) const;
 		Table<DNI>* get_Table (void) const;
 
+
+		void set_DispersionSelector (int newSelection);
+		void set_ExplorationSelector (int newSelection);
 		void set_CellNum (int cellNum);
 		void set_BlockNum (int blockNum);
 		void set_ChargeFactor (double chargeFactor);
@@ -59,13 +70,12 @@ class Experiment {
 		void initialize (void);
 		void restart (void);
 		void loadData (void);
-		void testInserts (void);
-		void testSearchs (void);
+		void testInsert (void);
+		void testSearch (void);
 		bool isPrime (unsigned number);
 		unsigned findPrime (unsigned number);
-		int selectDispersion (void) const;
-		int selectExploration (void) const;
 
 		// Write
 		void write (void);
+		
 };

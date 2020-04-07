@@ -15,7 +15,7 @@
 ===================================================================================*/
 /*----------  DECLARACION DE LIBRERIAS  ----------*/
 
-#include <iostream>
+#include <cstdlib>
 
 /*------------------------------------------------*/
 
@@ -28,12 +28,44 @@
 
 template <class T>
 class DispersionPseudoRandom : public DispersionBase<T> {
-
 	public:
 		// Builder & Destroyer
-		DispersionPseudoRandom();
-		virtual ~DispersionPseudoRandom();
+		DispersionPseudoRandom ();
+		virtual ~DispersionPseudoRandom ();
 
-		// Operator Overload
-		int operator() (const T& data, int size);
+		// Function
+		unsigned disperse (T& data, unsigned size);
 };
+
+/**
+ * @brief      Constructs a new instance.
+ */
+template <class T>
+DispersionPseudoRandom<T>::DispersionPseudoRandom () {
+
+}
+
+/**
+ * @brief      Destroys the object.
+ */
+template <class T>
+DispersionPseudoRandom<T>::~DispersionPseudoRandom () {
+
+}
+
+/**
+ * @brief      Searchs the cells to find one where store the data
+ *
+ * @param[in]  data  The data
+ * @param[in]  size  The size
+ *
+ * @tparam     T     The data type.
+ *
+ * @return     The cell position
+ */
+template <class T>
+unsigned DispersionPseudoRandom<T>::disperse (T& data, unsigned size) {
+	srand(unsigned(data.get_Code()));
+	return rand() % size;
+}
+

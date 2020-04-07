@@ -31,9 +31,47 @@ class DispersionSum : public DispersionBase<T> {
 
 	public:
 		// Builder & Destroyer
-		DispersionSum();
-		virtual ~DispersionSum();
+		DispersionSum ();
+		virtual ~DispersionSum ();
 
-		// Operator Overload
-		int operator() (const T& data, int size);
+		// Function
+		unsigned disperse (T& data, unsigned size);
 };
+
+
+/**
+ * @brief      Constructs a new instance.
+ */
+template <class T>
+DispersionSum<T>::DispersionSum () {
+
+}
+
+/**
+ * @brief      Destroys the object.
+ */
+template <class T>
+DispersionSum<T>::~DispersionSum () {
+
+}
+
+/**
+ * @brief      Searchs the cells to find one where store the data
+ *
+ * @param[in]  data  The data
+ * @param[in]  size  The size
+ *
+ * @tparam     T     The data type.
+ *
+ * @return     The cell position
+ */
+template <class T>
+unsigned DispersionSum<T>::disperse(T& data, unsigned size) {
+	int d = 0;
+	unsigned long x = data.get_Code();
+	while (x > 0) {
+		d += (x % 10);
+		x /= 10;
+	}
+	return (d % size);
+}

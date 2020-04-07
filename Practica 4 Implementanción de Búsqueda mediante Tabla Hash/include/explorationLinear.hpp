@@ -26,17 +26,49 @@
 
 /*------------------------------------------------*/
 
- 
 
 template <class T>
 class ExplorationLinear : public ExplorationBase<T> {
-	
+
 	public:
 		// Builder & Destroyer
 		ExplorationLinear();
 		virtual ~ExplorationLinear();
 
-		// Operator Overload
-		int operator() (int size, int pos, const T& data);
-
+		// Function
+		unsigned explorate(const T& data, unsigned pos, unsigned size);
 };
+
+
+/**
+ * @brief      Constructs a new instance.
+ */
+template <class T>
+ExplorationLinear<T>::ExplorationLinear () {
+
+}
+
+/**
+ * @brief      Destroys the object.
+ */
+template <class T>
+ExplorationLinear<T>::~ExplorationLinear () {
+
+}
+
+/**
+ * @brief      Searchs the cells to find one where store the data
+ *
+ * @param[in]  size  The size
+ * @param[in]  pos   The position
+ * @param[in]  data  The data
+ *
+ * @tparam     T     The data type.
+ *
+ * @return     The cell position
+ */
+template <class T>
+unsigned ExplorationLinear<T>::explorate (const T& data, unsigned pos, unsigned size) {
+	return ((data.get_Code() + pos) % size);
+}
+
