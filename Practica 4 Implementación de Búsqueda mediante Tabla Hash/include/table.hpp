@@ -32,6 +32,7 @@
 #include "dispersionSum.hpp"
 #include "dispersionModule.hpp"
 #include "dispersionPseudoRandom.hpp"
+#include "dispersionSum2.hpp"
 #include "DNI.hpp"
 
 /*------------------------------------------------*/
@@ -117,6 +118,10 @@ Table<T>::Table (unsigned cellNum, unsigned blockNum, int explorationSelector, i
 		
 		case 3:
 			fDispersion_ = new DispersionPseudoRandom<T>();
+			break;
+
+		case 4:
+			fDispersion_ = new DispersionSum2<T>();
 			break;
 		
 		default:

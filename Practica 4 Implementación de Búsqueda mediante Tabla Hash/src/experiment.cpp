@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-03 15:20:55
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-07 18:27:04
+* @Last Modified time: 2020-04-16 08:31:29
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -163,6 +163,7 @@ void Experiment::initialize (void) {
 		std::cout << "1. Module" << std::endl;
 		std::cout << "2. Sum" << std::endl;
 		std::cout << "3. PseudoRandom" << std::endl;
+		std::cout << "4. Sum2" << std::endl;
 		std::cin >> dispersionSelector_;
 
 		std::cout << "Introduce the charge factor: ";
@@ -272,7 +273,7 @@ unsigned Experiment::findPrime(unsigned number) {
 	for (int i = number - 1; i > 2; i--) {
 		isPrime = true;
 		for (int j = 2; j < i; j++) {
-			if ((i % j) != 0)
+			if ((i % j) == 0)
 				isPrime = false;
 			max = i;
 		}

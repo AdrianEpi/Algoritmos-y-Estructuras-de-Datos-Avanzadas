@@ -2,7 +2,7 @@
 =====================================================================================
 	=                                                                              =
 	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
-	=            Archivo:       explorationDouble.hpp                              =
+	=            Archivo:       dispersionSum2.hpp                                 =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         30/03/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
@@ -22,23 +22,20 @@
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #pragma once
-#include "explorationBase.hpp"
+#include "dispersionBase.hpp"
 
 /*------------------------------------------------*/
 
 template <class T>
-class ExplorationDouble : public ExplorationBase<T> {
-
+class DispersionSum2 : public DispersionBase<T> {
 
 	public:
 		// Builder & Destroyer
-		ExplorationDouble();
-		virtual ~ExplorationDouble();
+		DispersionSum2 ();
+		virtual ~DispersionSum2 ();
 
-		// Functions
-		unsigned explorate(const T& data, unsigned pos, unsigned size);
-		unsigned findPrime(unsigned number);
-
+		// Function
+		unsigned disperse (T& data, unsigned size);
 };
 
 
@@ -46,7 +43,7 @@ class ExplorationDouble : public ExplorationBase<T> {
  * @brief      Constructs a new instance.
  */
 template <class T>
-ExplorationDouble<T>::ExplorationDouble () {
+DispersionSum2<T>::DispersionSum2 () {
 
 }
 
@@ -54,50 +51,28 @@ ExplorationDouble<T>::ExplorationDouble () {
  * @brief      Destroys the object.
  */
 template <class T>
-ExplorationDouble<T>::~ExplorationDouble () {
+DispersionSum2<T>::~DispersionSum2 () {
 
 }
 
 /**
  * @brief      Searchs the cells to find one where store the data
  *
- * @param[in]  size  The size
- * @param[in]  pos   The position
  * @param[in]  data  The data
+ * @param[in]  size  The size
  *
  * @tparam     T     The data type.
  *
  * @return     The cell position
  */
 template <class T>
-unsigned ExplorationDouble<T>::explorate (const T& data, unsigned pos, unsigned size) {
-	unsigned prime = findPrime(data.get_Code());
-	int fx = prime - (data.get_Code() % prime);
-	return ((data.get_Code() + pos * fx) % size);
-}
-
-
-/**
- * @brief      Finds a the biggest prime number.
- *
- * @param[in]  number  The number
- *
- * @tparam     T       The data type
- *
- * @return     The prime number
- */
-template <class T>
-unsigned ExplorationDouble<T>::findPrime(unsigned number) {
-	bool prime;
-	for (unsigned i = (number - 1); i > 2; i--) {
-		prime = true;
-		for (int j = 2; j < i; j++)
-			if ((i % j) == 0)
-				prime = false;
-		
-		if (prime == true)
-			return i;
-	}
-
-	
+unsigned DispersionSum2<T>::disperse(T& data, unsigned size) {
+	unsigned number = 0;
+	int aux = data.get_Code();
+	while(aux != 0) {
+        int extNum = aux % 100;
+        aux /= 100;
+        number += extNum;
+    }
+	return number;
 }

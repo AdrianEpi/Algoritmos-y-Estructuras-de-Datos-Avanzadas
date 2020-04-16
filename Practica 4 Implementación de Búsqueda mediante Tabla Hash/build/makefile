@@ -8,7 +8,7 @@ hash: $(OBJECTS)
 	mv *.o ../objects
 	mv hash ../bin
 
-main.o: ../src/main.cpp ../include/cell.hpp ../include/table.hpp ../include/dispersionBase.hpp ../include/dispersionSum.hpp ../include/dispersionModule.hpp ../include/dispersionPseudoRandom.hpp ../include/explorationQuadratic.hpp ../include/explorationDouble.hpp ../include/explorationReDispersion.hpp ../include/explorationLinear.hpp ../include/explorationBase.hpp
+main.o: ../src/main.cpp ../include/cell.hpp ../include/table.hpp ../include/dispersionBase.hpp ../include/dispersionSum.hpp ../include/dispersionModule.hpp ../include/dispersionPseudoRandom.hpp ../include/explorationQuadratic.hpp ../include/explorationDouble.hpp ../include/explorationReDispersion.hpp ../include/explorationLinear.hpp ../include/explorationBase.hpp ../include/dispersionSum2.hpp
 	g++ $(CFLAGS) ../src/main.cpp
 
 
