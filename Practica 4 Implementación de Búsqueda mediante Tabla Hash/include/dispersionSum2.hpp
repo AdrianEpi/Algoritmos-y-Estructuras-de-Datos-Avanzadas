@@ -70,7 +70,7 @@ unsigned DispersionSum2<T>::disperse(T& data, unsigned size) {
 	unsigned number = 0;
 	int aux = data.get_Code();
 	while(aux != 0) {
-        int extNum = aux % 100;
+        int extNum = aux % 100; 
         aux /= 100;
         number += extNum;
     }
