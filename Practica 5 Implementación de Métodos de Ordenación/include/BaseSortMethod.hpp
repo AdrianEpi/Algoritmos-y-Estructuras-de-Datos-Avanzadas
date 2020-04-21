@@ -2,7 +2,7 @@
 =====================================================================================
 	=                                                                              =
 	=            Proyecto:      Práctica 5 Implementación de Métodos de Ordenación =
-	=            Archivo:       SortAlgorithm.hpp                                  =
+	=            Archivo:       BaseSortMethod.hpp                                 =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         21/04/2020                                         =
 	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados         =
@@ -28,23 +28,26 @@
 
 /*------------------------------------------------*/
 template <class T>
-class SortAlgorithm {
+class BaseSortMethod {
 
 	private:
 		Counter counter_;
+		bool statisticMode_;
 
 	public:
 		// Builder & Destroyer
-		SortAlgorithm ();
-		virtual ~SortAlgorithm ();
+		BaseSortMethod ();
+		virtual ~BaseSortMethod ();
 
 		// Getter & Setter 
 		Counter get_Counter (void) const;
+		bool get_StatisticMode (void) const;
 
 		void set_Counter (Counter counter);
+		void set_StatisticMode (bool mode);
 
 		// Functions
-		virtual void sort (std::vector<DNI> vector, int size) = 0;
+		virtual void sort (std::vector<T>& vector, int size) = 0;
 };
 
 
@@ -54,7 +57,7 @@ class SortAlgorithm {
  * @tparam     T     The data type
  */
 template <class T>
-SortAlgorithm<T>::SortAlgorithm () {
+BaseSortMethod<T>::BaseSortMethod () {
 	std::cout << "Created Correctly";
 }
 
@@ -64,7 +67,7 @@ SortAlgorithm<T>::SortAlgorithm () {
  * @tparam     T     The data type
  */
 template <class T>
-SortAlgorithm<T>::~SortAlgorithm () {
+BaseSortMethod<T>::~BaseSortMethod () {
 }
 
 /**
@@ -75,8 +78,20 @@ SortAlgorithm<T>::~SortAlgorithm () {
  * @return     The counter.
  */
 template <class T>
-Counter SortAlgorithm<T>::get_Counter (void) const {
+Counter BaseSortMethod<T>::get_Counter (void) const {
 	return counter_;
+}
+
+/**
+ * @brief      Gets the statistic mode.
+ *
+ * @tparam     T     The data type
+ *
+ * @return     The statistic mode.
+ */
+template <class T>
+bool BaseSortMethod<T>::get_StatisticMode (void) const {
+	return statisticMode_;
 }
 
 /**
@@ -87,12 +102,23 @@ Counter SortAlgorithm<T>::get_Counter (void) const {
  * @tparam     T        The data type
  */
 template <class T>
-void SortAlgorithm<T>::set_Counter (Counter counter) {
+void BaseSortMethod<T>::set_Counter (Counter counter) {
 	counter_ = counter;
 }
 
 /**
- * @brief      Sort Algorithm base
+ * @brief      Sets the statistic mode.
+ *
+ * @param[in]  mode  The mode
+ *
+ * @tparam     T     The data type
+ */
+template <class T>
+void BaseSortMethod<T>::set_StatisticMode (bool mode) {
+	statisticMode_ = mode;
+}
+/**
+ * @brief      Sort Method base
  *
  * @param[in]  vector  The vector
  * @param[in]  size    The size
@@ -100,5 +126,5 @@ void SortAlgorithm<T>::set_Counter (Counter counter) {
  * @tparam     T       The data type
  */
 template <class T>
-void SortAlgorithm<T>::sort (std::vector<DNI> vector, int size) {
+void BaseSortMethod<T>::sort (std::vector<T>& vector, int size) {
 }

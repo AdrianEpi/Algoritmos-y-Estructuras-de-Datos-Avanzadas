@@ -1,7 +1,7 @@
 /*===================================================================================
 =====================================================================================
 	=                                                                              =
-	=            Proyecto:      Práctica 4 Implementación de Búsqueda Tabla Hash   =
+	=            Proyecto:      Práctica 5 Implementación de Métodos de Ordenación =
 	=            Archivo:       DNI.cpp                                            =
 	=            Autor:         Adrián Epifanio Rodríguez Hernández                =
 	=            Fecha:         30/03/2020                                         =
@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 17:41:42
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-07 17:48:19
+* @Last Modified time: 2020-04-21 10:02:45
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 

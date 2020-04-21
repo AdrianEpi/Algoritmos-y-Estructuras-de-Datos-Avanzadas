@@ -1,10 +1,10 @@
 #Variable objetos
-OBJECTS = main.o  DNI.o
-ALGORITHMS = SortAlgorithm.o
+OBJECTS = main.o  DNI.o Counter.o
+METHODS = ../include/BaseSortMethod.hpp ../include/InsertionMethod.hpp ../include/BubbleSortMethod.hpp ../include/HeapSortMethod.hpp ../include/QuickSortMethod.hpp ../include/ShellSortMethod.hpp
 #Flags de compilacion
-CFLAGS = -c -std=c++17
+CFLAGS = -c -std=c++17 -fpermissive
 
-ordenacion: $(OBJECTS)
+ordenacion: $(OBJECTS) $(METHODS)
 	g++  $(OBJECTS) -o ordenacion
 	mv *.o ../objects
 	mv ordenacion ../bin
@@ -17,10 +17,6 @@ DNI.o: ../src/DNI.cpp ../include/DNI.hpp
 
 Counter.o: ../src/Counter.cpp ../include/Counter.hpp
 	g++ $(CFLAGS) ../src/Counter.cpp
-
-SortAlgorithm.o: ../src/SortAlgorithm.cpp ../include/SortAlgorithm.hpp
-	g++ $(CFLAGS) ../src/SortAlgorithm.cpp
-
 
 .PHONY: clean
 clean:
