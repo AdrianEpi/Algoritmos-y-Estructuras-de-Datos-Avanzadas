@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-21 09:27:28
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-21 09:48:26
+* @Last Modified time: 2020-04-21 22:59:48
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -114,7 +114,7 @@ void Counter::set_LocalAccum (int localAccum) {
  * @brief      Starts the counter.
  */
 void Counter::start (void) {
-	set_Accum(0);
+	set_LocalAccum(0);
 }
 
 /**
@@ -123,8 +123,12 @@ void Counter::start (void) {
  * @return     The counter local ammount.
  */
 int Counter::stop (void) {
-	set_Min(localAccum_ < min_ ? localAccum_:min_);
-	set_Max(localAccum_ > max_ ? localAccum_:max_);
+	if (localAccum_ < min_) {
+		set_Min(localAccum_);
+	}
+	if (localAccum_ > max_) {
+		set_Max(localAccum_);
+	}
 	accum_ += localAccum_;
 	return get_LocalAccum();
 }
@@ -133,10 +137,17 @@ int Counter::stop (void) {
  * @brief      Resets the object.
  */
 void Counter::reset (void) {
-	set_Min(std::numeric_limits<int>::max());
+	set_Min(99999999);
 	set_Max(0);
 	set_Accum(0);
 	set_LocalAccum(0);
+}
+
+/**
+ * @brief      Incrementates the counter
+ */
+void Counter::incrementation (void) {
+	localAccum_++;
 }
 
 /**

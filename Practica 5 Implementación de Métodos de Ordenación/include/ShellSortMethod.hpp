@@ -85,7 +85,8 @@ void ShellSortMethod<T>::sort (std::vector<T>& vector, int size) {
 				}
 				std::cout << std::endl;
 			}
-			while ((j >= d) && (aux < vector[j-d])) {		
+			while ((j >= d) && (aux < vector[j-d])) {	
+				BaseSortMethod<T>::incrementateCounter();	
 				vector[j] = vector[j-d];
 				j = j - d;
 			}

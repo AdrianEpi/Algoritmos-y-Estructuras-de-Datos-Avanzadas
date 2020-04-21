@@ -79,6 +79,7 @@ void InsertionMethod<T>::sort (std::vector<T>& vector, int size) {
 		}
 		aux = i - 1;
 		while (( aux >= 0) && (temp < vector[aux])) {
+			BaseSortMethod<T>::incrementateCounter();
 			vector[aux + 1] = vector[aux];
 			aux--;
 		}

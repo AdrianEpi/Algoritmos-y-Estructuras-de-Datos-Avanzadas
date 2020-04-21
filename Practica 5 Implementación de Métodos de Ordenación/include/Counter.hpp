@@ -56,6 +56,7 @@ class Counter {
 		void start (void);
 		int stop (void);
 		void reset (void);
+		void incrementation (void);
 		
 		// Operators Overload
 		Counter& operator++ (void); 

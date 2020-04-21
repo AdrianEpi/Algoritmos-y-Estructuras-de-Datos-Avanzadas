@@ -48,6 +48,9 @@ class BaseSortMethod {
 
 		// Functions
 		virtual void sort (std::vector<T>& vector, int size) = 0;
+		std::ostream& write (std::ostream& os, std::string method, int testNumber);
+		void incrementateCounter (void);
+		void stopCounter (void);
 };
 
 
@@ -127,4 +130,17 @@ void BaseSortMethod<T>::set_StatisticMode (bool mode) {
  */
 template <class T>
 void BaseSortMethod<T>::sort (std::vector<T>& vector, int size) {
+}
+
+template <class T>
+void BaseSortMethod<T>::incrementateCounter (void) {
+	counter_.incrementation();
+}
+template <class T>
+void BaseSortMethod<T>::stopCounter (void) {
+	counter_.stop();
+}
+template <class T>
+std::ostream& BaseSortMethod<T>::write (std::ostream& os, std::string method, int testNumber) {
+	os << std::endl << method << "\t\t  " << counter_.get_Min() << "\t\t  " << (counter_.get_LocalAccum() / testNumber) << "\t\t  " << counter_.get_Max();
 }

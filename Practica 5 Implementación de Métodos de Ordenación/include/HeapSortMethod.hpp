@@ -102,10 +102,12 @@ void HeapSortMethod<T>::order (int pos, std::vector<T>& vector,int size) {
 		std::cout << std::endl;
 	}
 	
+	BaseSortMethod<T>::incrementateCounter();
 	if((h1 < size) && (vector[h1] > vector[aux])) {
 		aux = h1;
 	}
 
+	BaseSortMethod<T>::incrementateCounter();
 	if((h2 < size) && (vector[h2] > vector[aux])) {
 		aux = h2;
 	}

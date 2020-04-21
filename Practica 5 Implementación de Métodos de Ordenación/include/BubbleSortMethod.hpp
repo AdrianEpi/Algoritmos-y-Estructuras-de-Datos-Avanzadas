@@ -78,6 +78,7 @@ void BubbleSortMethod<T>::sort (std::vector<T>& vector, int size) {
 				}
 				std::cout << std::endl;
 			}
+			BaseSortMethod<T>::incrementateCounter();
 			if (vector[j] < vector [j - 1]) {
 				// Swap
 				temp = vector[j - 1];

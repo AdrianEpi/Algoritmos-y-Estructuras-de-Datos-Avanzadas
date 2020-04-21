@@ -96,6 +96,7 @@ void QuickSortMethod<T>::quickSort(std::vector<T>& vector, int start, int end) {
 	
 	while (tmpStart <= tmpEnd) {
 		while (vector[tmpStart] < pivot) {
+			BaseSortMethod<T>::incrementateCounter();
 			tmpStart++;
 			if (BaseSortMethod<T>::get_StatisticMode() == false) {
 				std::cin.get();
@@ -108,6 +109,7 @@ void QuickSortMethod<T>::quickSort(std::vector<T>& vector, int start, int end) {
 		}
 
 		while (vector[tmpEnd] > pivot) {
+			BaseSortMethod<T>::incrementateCounter();
 			tmpEnd--;
 			if (BaseSortMethod<T>::get_StatisticMode() == false) {
 				std::cin.get();

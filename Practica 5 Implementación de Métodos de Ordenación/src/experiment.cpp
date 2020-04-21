@@ -2,7 +2,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-21 17:35:17
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-21 18:35:27
+* @Last Modified time: 2020-04-21 22:55:32
 */
 #include "../include/experiment.hpp"
 
@@ -147,7 +147,7 @@ void Experiment::initialize (void) {
 	//system("clear");
 	std::cout << "\tChoose the program mode:";
 	std::cout << std::endl << "\t\t1. Testing Mode";
-	std::cout << std::endl << "\t\t2. Statistics Mode";
+	std::cout << std::endl << "\t\t2. Statistics Mode" << std::endl;
 	std::cin >> selector_;
 	assert(selector_ == 1 || selector_ == 2);
 	//system("clear");
@@ -167,7 +167,7 @@ void Experiment::initialize (void) {
 	}
 	else {
 		//system("clear");
-		std::cout << std::endl << "Introduce the number of tests: ";
+		std::cout << std::endl << "\tIntroduce the number of tests: ";
 		std::cin >> tryNum_;
 	}
 	//system("clear");
@@ -243,48 +243,62 @@ void Experiment::testMode (void) {
 }
 
 void Experiment::statisticsMode (void) {
+	std::cout << std::endl << "\t\tComparations Number";
+	std::cout << std::endl << "\t\t\t Minimum\tMedium\t\tMaximum" << std::endl;
 	algorithm_ = new InsertionMethod<DNI>;
 	algorithm_ -> set_StatisticMode(true);
+	//algorithm_ -> get_Counter().reset();
 	for (int i = 0; i < get_TryNum(); i++) {
+		algorithm_ -> get_Counter().start();
 		generateDNI();
 		algorithm_ -> sort(bench_, get_Size());
+		algorithm_ -> stopCounter();
 	}
-	std::cout << "Insertion: " << std::endl;
+	algorithm_ -> write(std::cout, "Insertion: ", get_TryNum());
 	delete algorithm_;
 
 	algorithm_ = new BubbleSortMethod<DNI>;
 	algorithm_ -> set_StatisticMode(true);
 	for(int i = 0; i < get_TryNum(); i++) {
+		algorithm_ -> get_Counter().start();
 		generateDNI();
 		algorithm_ -> sort(bench_, get_Size());
+		algorithm_ -> stopCounter();
 	}
-	std::cout << "BubbleSort: " << std::endl;
+	algorithm_ -> write(std::cout, "BubbleSort: ", get_TryNum());
 	delete algorithm_;
 
 	algorithm_ = new HeapSortMethod<DNI>;
 	algorithm_ -> set_StatisticMode(true);
 	for(int i = 0; i < get_TryNum(); i++) {
+		algorithm_ -> get_Counter().start();
 		generateDNI();
 		algorithm_ -> sort(bench_, get_Size());
+		algorithm_ -> stopCounter();
 	}
-	std::cout << "HeapSort: " << std::endl;
+	algorithm_ -> write(std::cout, "HeapSort:", get_TryNum());
 	delete algorithm_;
 
 	algorithm_ = new QuickSortMethod<DNI>;
 	algorithm_ -> set_StatisticMode(true);
 	for(int i = 0; i < get_TryNum(); i++) {
+		algorithm_ -> get_Counter().start();
 		generateDNI();
 		algorithm_ -> sort(bench_, get_Size());
+		algorithm_ -> stopCounter();
 	}
-	std::cout << "QuickSort: " << std::endl;
+	algorithm_ -> write(std::cout, "QuickSort:", get_TryNum());
 	delete algorithm_;
 
 	algorithm_ = new ShellSortMethod<DNI>;
 	algorithm_ -> set_StatisticMode(true);
 	for(int i = 0; i < get_TryNum(); i++) {
+		algorithm_ -> get_Counter().start();
 		generateDNI();
 		algorithm_ -> sort(bench_, get_Size());
+		algorithm_ -> stopCounter();
 	}
-	std::cout << "ShellSort: " << std::endl;
+	algorithm_ -> write(std::cout, "ShellSort", get_TryNum());
 	delete algorithm_;
+	std::cout << std::endl;
 }
