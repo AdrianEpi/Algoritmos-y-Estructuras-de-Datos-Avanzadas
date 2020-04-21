@@ -33,10 +33,10 @@ class DNI {
 		
 	public:
 		// Builders & Destroyer
-		 DNI ();
-		 DNI (unsigned value);
-		 DNI (DNI& copy);
-		 ~DNI ();
+		DNI ();
+		DNI (unsigned value);
+		DNI (const DNI& copy);
+		~DNI ();
 		
 		// Getter & Setter
 		int get_Code (void) const;

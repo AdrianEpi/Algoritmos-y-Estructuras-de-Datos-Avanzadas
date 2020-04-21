@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 17:41:42
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-21 10:02:45
+* @Last Modified time: 2020-04-21 18:03:29
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -45,7 +45,7 @@ DNI::DNI (unsigned code) {
  *
  * @param      copy  The copy
  */
-DNI::DNI (DNI& copy) {
+DNI::DNI (const DNI& copy) {
 	set_Code(copy.get_Code());
 }
 

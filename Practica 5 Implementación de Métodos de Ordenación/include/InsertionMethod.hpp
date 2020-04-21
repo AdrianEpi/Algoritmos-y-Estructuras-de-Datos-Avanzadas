@@ -71,7 +71,7 @@ void InsertionMethod<T>::sort (std::vector<T>& vector, int size) {
 	int aux;
 	for (int i = 1; i < size; i++) {
 		temp = vector[i];
-		if (get_StatisticMode() == false) {
+		if (BaseSortMethod<T>::get_StatisticMode() == false) {
 			std::cout << std::endl << "i = " << i << " ";
 			for (int j = 0; j < size; j++) {
 				std::cout << vector[j] << " ";
@@ -82,7 +82,7 @@ void InsertionMethod<T>::sort (std::vector<T>& vector, int size) {
 			vector[aux + 1] = vector[aux];
 			aux--;
 		}
-		if (get_StatisticMode() == false) {
+		if (BaseSortMethod<T>::get_StatisticMode() == false) {
 			std::cout << " j = " << aux + 1;
 		}
 		vector[aux + 1] = temp;

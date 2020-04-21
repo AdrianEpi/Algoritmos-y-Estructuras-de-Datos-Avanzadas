@@ -58,7 +58,7 @@ class BaseSortMethod {
  */
 template <class T>
 BaseSortMethod<T>::BaseSortMethod () {
-	std::cout << "Created Correctly";
+	//std::cout << "Created Correctly";
 }
 
 /**

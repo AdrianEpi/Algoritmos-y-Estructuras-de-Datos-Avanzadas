@@ -77,8 +77,8 @@ void ShellSortMethod<T>::sort (std::vector<T>& vector, int size) {
 			aux = vector[i];
 			j = i;
 			it++;
-			if (get_StatisticMode() == 0) {
-				getchar();
+			if (BaseSortMethod<T>::get_StatisticMode() == 0) {
+				std::cin.get();
 				std::cout << "Iteration: " << it << std::endl;
 				for (int k = 0 ; k < size; k++) {
 					std::cout << vector[k] << " ";

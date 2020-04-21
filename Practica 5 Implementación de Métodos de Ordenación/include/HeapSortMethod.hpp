@@ -94,8 +94,8 @@ void HeapSortMethod<T>::order (int pos, std::vector<T>& vector,int size) {
 	int h1 = 2 * pos + 1;
 	int h2 = 2 * pos + 2;
 	
-	if (get_StatisticMode() == false) {
-		getchar();
+	if (BaseSortMethod<T>::get_StatisticMode() == false) {
+		std::cin.get();
 		for (int k = 0; k < size; k++) {
 			std::cout << vector[k] << " ";
 		}

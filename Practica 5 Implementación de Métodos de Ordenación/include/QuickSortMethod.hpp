@@ -85,8 +85,8 @@ void QuickSortMethod<T>::quickSort(std::vector<T>& vector, int start, int end) {
 	int tmpStart = start;
 	int tmpEnd = end;
 	T pivot = vector[(tmpStart + tmpEnd) / 2];
-	if(get_StatisticMode() == false) {
-		getchar();
+	if(BaseSortMethod<T>::get_StatisticMode() == false) {
+		std::cin.get();
 		std::cout << "Pivot:" << pivot << ", i =" << tmpStart << ", f=" << tmpEnd << std::endl;
 		for(int k = 0; k < vector.size(); k++){
 			std::cout<<" "<<vector[k];
@@ -97,8 +97,8 @@ void QuickSortMethod<T>::quickSort(std::vector<T>& vector, int start, int end) {
 	while (tmpStart <= tmpEnd) {
 		while (vector[tmpStart] < pivot) {
 			tmpStart++;
-			if (get_StatisticMode() == false) {
-				getchar();
+			if (BaseSortMethod<T>::get_StatisticMode() == false) {
+				std::cin.get();
 				std::cout << "Pivot:" << pivot << ", i =" << tmpStart << ", f=" << tmpEnd << std::endl;
 				for (int k = 0; k < vector.size(); k++) {
 					std::cout << " " << vector[k];
@@ -109,8 +109,8 @@ void QuickSortMethod<T>::quickSort(std::vector<T>& vector, int start, int end) {
 
 		while (vector[tmpEnd] > pivot) {
 			tmpEnd--;
-			if (get_StatisticMode() == false) {
-				getchar();
+			if (BaseSortMethod<T>::get_StatisticMode() == false) {
+				std::cin.get();
 				std::cout << "Pivot:" << pivot << ", i =" << tmpStart << ", f=" << tmpEnd << std::endl;				
 				for (int k = 0; k < vector.size(); k++) {
 					std::cout << " " << vector[k];
@@ -125,8 +125,8 @@ void QuickSortMethod<T>::quickSort(std::vector<T>& vector, int start, int end) {
 			vector[tmpEnd] = aux;
 			tmpStart++;
 			tmpEnd--;
-			if(get_StatisticMode() == 0){
-				getchar();
+			if(BaseSortMethod<T>::get_StatisticMode() == 0){
+				std::cin.get();
 				std::cout << "Pivot:" << pivot << ", i =" << tmpStart << ", f=" << tmpEnd << std::endl;				
 				for(int k = 0; k < vector.size(); k++){
 					std::cout << " " << vector[k];
