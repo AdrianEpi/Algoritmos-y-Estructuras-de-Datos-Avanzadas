@@ -70,8 +70,9 @@ void BubbleSortMethod<T>::sort (std::vector<T>& vector, int size) {
 	T temp;
 	int aux;
 	for (int i = 1; i < size; i++) {
-		for (int j = size; j >= 1; j--) {
+		for (int j = size - 1; j >= 1; j--) {
 			if (BaseSortMethod<T>::get_StatisticMode() == false) {
+				std::cin.get();
 				std::cout << std::endl << "pos = (" << j << ", " << j - 1 << ") ";
 				for (int k = 0; k < size; k++) {
 					std::cout << " " << vector[k];

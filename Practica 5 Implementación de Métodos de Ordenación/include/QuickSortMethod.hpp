@@ -68,7 +68,7 @@ QuickSortMethod<T>::~QuickSortMethod () {
  */
 template <class T>
 void QuickSortMethod<T>::sort (std::vector<T>& vector, int size) {
-	quickSort(vector, 0, size);
+	quickSort(vector, 0, size - 1);
 }
 
 /**

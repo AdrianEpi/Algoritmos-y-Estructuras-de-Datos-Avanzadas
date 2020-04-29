@@ -71,7 +71,7 @@ void ShellSortMethod<T>::sort (std::vector<T>& vector, int size) {
 	int j;
 	int it = 0;
 	int d = size;
-	while (d > 0) {
+	while (d > 0) { 
 		d = d / 2;
 		for (int i = d; i < size; i++) {
 			aux = vector[i];
