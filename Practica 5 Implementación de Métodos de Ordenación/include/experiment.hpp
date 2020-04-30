@@ -6,6 +6,7 @@
 #include "QuickSortMethod.hpp"
 #include "ShellSortMethod.hpp"
 #include "DNI.hpp"
+#include "ISBN.hpp"
 
 #include <vector>
 #include <iostream>
@@ -16,10 +17,10 @@
 class Experiment {
 	
 	private: 
-		BaseSortMethod<DNI>* algorithm_;
+		BaseSortMethod<ISBN>* algorithm_;
 		int tryNum_;
 		int size_;
-		std::vector<DNI> bench_;
+		std::vector<ISBN> bench_;
 		int selector_;
 		int algorithmSelector_;
 
@@ -29,24 +30,24 @@ class Experiment {
 		~Experiment ();
 
 		// Getters & Setters
-		BaseSortMethod<DNI>* get_Algorithm (void) const;
+		BaseSortMethod<ISBN>* get_Algorithm (void) const;
 		int get_TryNum (void) const;
 		int get_Size (void) const;
-		std::vector<DNI> get_Bench (void) const;
+		std::vector<ISBN> get_Bench (void) const;
 		int get_Selector (void) const;
 		int get_AlgorithmSelector (void) const;
 
-		void set_Algorithm (BaseSortMethod<DNI>* algorithm);
+		void set_Algorithm (BaseSortMethod<ISBN>* algorithm);
 		void set_TryNum (int tryNum);
 		void set_Size (int size);
-		void set_Bench (std::vector<DNI> bench);
+		void set_Bench (std::vector<ISBN> bench);
 		void set_Selector (int selector);
 		void set_AlgorithmSelector (int algorithmSelector);
 
 		// Functions
 		void initialize (void);
-		void generateDNI (void);
+		void generateISBN (void);
 		void startExperiment (void);
-		void testMode (void);
+		void testMode (void); 
 		void statisticsMode (void);
 };

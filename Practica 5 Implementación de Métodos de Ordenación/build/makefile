@@ -1,5 +1,5 @@
 #Variable objetos
-OBJECTS = main.o  DNI.o Counter.o experiment.o
+OBJECTS = main.o  DNI.o Counter.o experiment.o ISBN.o
 METHODS = ../include/BaseSortMethod.hpp ../include/InsertionMethod.hpp ../include/BubbleSortMethod.hpp ../include/HeapSortMethod.hpp ../include/QuickSortMethod.hpp ../include/ShellSortMethod.hpp
 #Flags de compilacion
 CFLAGS = -c -std=c++17
@@ -14,6 +14,9 @@ main.o: ../src/main.cpp
 
 DNI.o: ../src/DNI.cpp ../include/DNI.hpp
 	g++ $(CFLAGS) ../src/DNI.cpp
+
+ISBN.o: ../src/ISBN.cpp ../include/ISBN.hpp
+	g++ $(CFLAGS) ../src/ISBN.cpp
 
 Counter.o: ../src/Counter.cpp ../include/Counter.hpp
 	g++ $(CFLAGS) ../src/Counter.cpp

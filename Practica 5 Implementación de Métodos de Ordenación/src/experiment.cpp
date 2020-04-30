@@ -2,7 +2,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-04-21 17:35:17
 * @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-21 22:55:32
+* @Last Modified time: 2020-04-30 08:39:21
 */
 #include "../include/experiment.hpp"
 
@@ -39,7 +39,7 @@ Experiment::~Experiment () {
  *
  * @return     The algorithm.
  */
-BaseSortMethod<DNI>* Experiment::get_Algorithm (void) const {
+BaseSortMethod<ISBN>* Experiment::get_Algorithm (void) const {
 	return algorithm_; 
 }
 
@@ -66,7 +66,7 @@ int Experiment::get_Size (void) const {
  *
  * @return     The bench.
  */
-std::vector<DNI> Experiment::get_Bench (void) const {
+std::vector<ISBN> Experiment::get_Bench (void) const {
 	return bench_; 
 }
 
@@ -93,7 +93,7 @@ int Experiment::get_AlgorithmSelector (void) const {
  *
  * @param      algorithm  The algorithm
  */
-void Experiment::set_Algorithm (BaseSortMethod<DNI>* algorithm) {
+void Experiment::set_Algorithm (BaseSortMethod<ISBN>* algorithm) {
 	algorithm_ = algorithm;
 }
 
@@ -121,7 +121,7 @@ void Experiment::set_Size (int size) {
  *
  * @param      bench  The bench
  */
-void Experiment::set_Bench (std::vector<DNI> bench) {
+void Experiment::set_Bench (std::vector<ISBN> bench) {
 	//bench_ = bench;
 }
 
@@ -171,17 +171,17 @@ void Experiment::initialize (void) {
 		std::cin >> tryNum_;
 	}
 	//system("clear");
-	generateDNI();
+	generateISBN();
 }
 
 /**
- * @brief      Generates a random DNI
+ * @brief      Generates a random ISBN
  */
-void Experiment::generateDNI (void) {
+void Experiment::generateISBN (void) {
 	bench_.resize(0);
 	for (int i = 0; i < get_Size(); i++) {
-		DNI newDNI((rand() % 50000000) + 30000000);
-		bench_.push_back(newDNI);
+		ISBN newISBN((rand() % 5000000000) + 30000000);
+		bench_.push_back(newISBN);
 	}
 }
 
@@ -200,23 +200,23 @@ void Experiment::startExperiment (void) {
 void Experiment::testMode (void) {
 	switch (get_AlgorithmSelector()) {
 		case 1:
-			algorithm_ = new InsertionMethod<DNI>();
+			algorithm_ = new InsertionMethod<ISBN>();
 			break;
 
 		case 2:
-			algorithm_ = new BubbleSortMethod<DNI>();
+			algorithm_ = new BubbleSortMethod<ISBN>();
 			break;
 
 		case 3:
-			algorithm_ = new HeapSortMethod<DNI>();
+			algorithm_ = new HeapSortMethod<ISBN>();
 			break;
 
 		case 4:
-			algorithm_ = new QuickSortMethod<DNI>();
+			algorithm_ = new QuickSortMethod<ISBN>();
 			break;
 
 		case 5:
-			algorithm_ = new ShellSortMethod<DNI>();
+			algorithm_ = new ShellSortMethod<ISBN>();
 			break;
 
 		case 0:
@@ -245,56 +245,56 @@ void Experiment::testMode (void) {
 void Experiment::statisticsMode (void) {
 	std::cout << std::endl << "\t\tComparations Number";
 	std::cout << std::endl << "\t\t\t Minimum\tMedium\t\tMaximum" << std::endl;
-	algorithm_ = new InsertionMethod<DNI>;
+	algorithm_ = new InsertionMethod<ISBN>;
 	algorithm_ -> set_StatisticMode(true);
 	//algorithm_ -> get_Counter().reset();
 	for (int i = 0; i < get_TryNum(); i++) {
 		algorithm_ -> get_Counter().start();
-		generateDNI();
+		generateISBN();
 		algorithm_ -> sort(bench_, get_Size());
 		algorithm_ -> stopCounter();
 	}
 	algorithm_ -> write(std::cout, "Insertion: ", get_TryNum());
 	delete algorithm_;
 
-	algorithm_ = new BubbleSortMethod<DNI>;
+	algorithm_ = new BubbleSortMethod<ISBN>;
 	algorithm_ -> set_StatisticMode(true);
 	for(int i = 0; i < get_TryNum(); i++) {
 		algorithm_ -> get_Counter().start();
-		generateDNI();
+		generateISBN();
 		algorithm_ -> sort(bench_, get_Size());
 		algorithm_ -> stopCounter();
 	}
 	algorithm_ -> write(std::cout, "BubbleSort: ", get_TryNum());
 	delete algorithm_;
 
-	algorithm_ = new HeapSortMethod<DNI>;
+	algorithm_ = new HeapSortMethod<ISBN>;
 	algorithm_ -> set_StatisticMode(true);
 	for(int i = 0; i < get_TryNum(); i++) {
 		algorithm_ -> get_Counter().start();
-		generateDNI();
+		generateISBN();
 		algorithm_ -> sort(bench_, get_Size());
 		algorithm_ -> stopCounter();
 	}
 	algorithm_ -> write(std::cout, "HeapSort:", get_TryNum());
 	delete algorithm_;
 
-	algorithm_ = new QuickSortMethod<DNI>;
+	algorithm_ = new QuickSortMethod<ISBN>;
 	algorithm_ -> set_StatisticMode(true);
 	for(int i = 0; i < get_TryNum(); i++) {
 		algorithm_ -> get_Counter().start();
-		generateDNI();
+		generateISBN();
 		algorithm_ -> sort(bench_, get_Size());
 		algorithm_ -> stopCounter();
 	}
 	algorithm_ -> write(std::cout, "QuickSort:", get_TryNum());
 	delete algorithm_;
 
-	algorithm_ = new ShellSortMethod<DNI>;
+	algorithm_ = new ShellSortMethod<ISBN>;
 	algorithm_ -> set_StatisticMode(true);
 	for(int i = 0; i < get_TryNum(); i++) {
 		algorithm_ -> get_Counter().start();
-		generateDNI();
+		generateISBN();
 		algorithm_ -> sort(bench_, get_Size());
 		algorithm_ -> stopCounter();
 	}
