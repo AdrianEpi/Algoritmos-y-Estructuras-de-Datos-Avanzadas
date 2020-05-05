@@ -1,8 +1,32 @@
-#pragma once
-#include "NodeBB.hpp"
+/*====================================================================================================
+======================================================================================================
+	=                                                                                           =
+	=            Proyecto:      Práctica 6 Implementación de un Árbol Binario de Busqueda ABB   =
+	=            Archivo:       Queue.hpp                                                       =
+	=            Autor:         Adrián Epifanio Rodríguez Hernández                             =
+	=            Fecha:         05/05/2020                                                      =
+	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados                      =
+	=            Lenguaje:      C++                                                             =
+	=            Correo:        alu0101158280@ull.edu.es                                        =
+	=            Lugar:         Universidad De La Laguna                                        =
+	=                           Escuela Superior de Ingeniería y Tecnología                     =
+	=                                                                                           =
+======================================================================================================
+=====================================================================================================*/
+/*----------  DECLARACION DE LIBRERIAS  ----------*/
+
 #include <cstdio>
 #include <vector>
 #include <cassert>
+
+/*------------------------------------------------*/
+
+/*----------  DECLARACION DE FUNCIONES  ----------*/
+
+#pragma once
+#include "NodeBB.hpp"
+
+/*------------------------------------------------*/
 
 template <class T>
 class Queue	{
@@ -10,7 +34,7 @@ class Queue	{
 	private:
 		int size_;
 		std::vector<int> levels_;
-		std::vector<NodeBB<T>> nodes_;
+		std::vector<NodeBB<T>*> nodes_;
 
 	public:
 		// Builder & Destroyer
@@ -18,13 +42,13 @@ class Queue	{
 		~Queue (void);
 
 		// Getters & Setters
-		int get_Size (void) const;
-		std::vector<NodeBB<T>> get_Levels (void) const;
-		std::vector<NodeBB<T>> get_Nodes (void) const;
+		int get_Size (void);
+		std::vector<NodeBB<T>> get_Levels (void);
+		std::vector<NodeBB<T>*> get_Nodes (void);
 
 		void set_Size (int size);
 		void set_Levels (std::vector<NodeBB<T>> levels);
-		void set_Nodes (std::vector<NodeBB<T>> nodes);
+		void set_Nodes (std::vector<NodeBB<T>*> nodes);
 
 		// Functinos
 		void insert (NodeBB<T>* node, int level);
@@ -63,7 +87,7 @@ Queue<T>::~Queue (void) {
  * @return     The size.
  */
 template <class T>
-int Queue<T>::get_Size (void) const {
+int Queue<T>::get_Size (void) {
 	return size_;
 }
 
@@ -75,7 +99,7 @@ int Queue<T>::get_Size (void) const {
  * @return     The levels.
  */
 template <class T>
-std::vector<NodeBB<T>> Queue<T>::get_Levels (void) const {
+std::vector<NodeBB<T>> Queue<T>::get_Levels (void) {
 	return levels_;
 }
 
@@ -87,7 +111,7 @@ std::vector<NodeBB<T>> Queue<T>::get_Levels (void) const {
  * @return     The nodes.
  */
 template <class T>
-std::vector<NodeBB<T>> Queue<T>::get_Nodes (void) const {
+std::vector<NodeBB<T>*> Queue<T>::get_Nodes (void) {
 	return nodes_;
 }
 
@@ -123,7 +147,7 @@ void Queue<T>::set_Levels (std::vector<NodeBB<T>> levels) {
  * @tparam     T      The data type.
  */
 template <class T>
-void Queue<T>::set_Nodes (std::vector<NodeBB<T>> nodes) {
+void Queue<T>::set_Nodes (std::vector<NodeBB<T>*> nodes) {
 	nodes_ = nodes;
 }
 

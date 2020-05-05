@@ -1,6 +1,30 @@
-#pragma once
-#include <cstdio>
+/*====================================================================================================
+======================================================================================================
+	=                                                                                           =
+	=            Proyecto:      Práctica 6 Implementación de un Árbol Binario de Busqueda ABB   =
+	=            Archivo:       NodeBB.hpp                                                      =
+	=            Autor:         Adrián Epifanio Rodríguez Hernández                             =
+	=            Fecha:         05/05/2020                                                      =
+	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados                      =
+	=            Lenguaje:      C++                                                             =
+	=            Correo:        alu0101158280@ull.edu.es                                        =
+	=            Lugar:         Universidad De La Laguna                                        =
+	=                           Escuela Superior de Ingeniería y Tecnología                     =
+	=                                                                                           =
+======================================================================================================
+=====================================================================================================*/
+/*----------  DECLARACION DE LIBRERIAS  ----------*/
+
 #include <iostream>
+#include <iomanip>
+
+/*------------------------------------------------*/
+
+/*----------  DECLARACION DE FUNCIONES  ----------*/
+
+#pragma once
+
+/*------------------------------------------------*/
 
 template <class T>
 class NodeBB {
@@ -17,9 +41,9 @@ class NodeBB {
 		virtual ~NodeBB (void);
 
 		// Getters & Setters
-		T get_Data (void) const;
-		NodeBB*& get_Left (void) const;
-		NodeBB*& get_Right (void) const;
+		T get_Data (void);
+		NodeBB*& get_Left (void);
+		NodeBB*& get_Right (void);
 
 		void set_Data (T data);
 		void set_Left (NodeBB* left);
@@ -82,7 +106,7 @@ NodeBB<T>::~NodeBB (void) {
  * @return     The data.
  */
 template <class T>
-T NodeBB<T>::get_Data (void) const {
+T NodeBB<T>::get_Data (void) {
 	return data_;
 }
 
@@ -95,7 +119,7 @@ T NodeBB<T>::get_Data (void) const {
  * @return     The left.
  */
 template <class T>
-NodeBB<T>*& NodeBB<T>::get_Left (void) const {
+NodeBB<T>*& NodeBB<T>::get_Left (void) {
 	return left_;
 }
 
@@ -107,7 +131,7 @@ NodeBB<T>*& NodeBB<T>::get_Left (void) const {
  * @return     The right.
  */
 template <class T>
-NodeBB<T>*& NodeBB<T>::get_Right (void) const {
+NodeBB<T>*& NodeBB<T>::get_Right (void) {
 	return right_;
 }
 
@@ -161,6 +185,6 @@ void NodeBB<T>::write(void) const {
 		std::cout << "[.]";
 	}
 	else{
-		std::cout << "[" << data_ << "]";
+		std::cout << "[" << data_.get_Code() << "]";
 	}
 }

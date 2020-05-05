@@ -1,6 +1,26 @@
+/*====================================================================================================
+======================================================================================================
+	=                                                                                           =
+	=            Proyecto:      Práctica 6 Implementación de un Árbol Binario de Busqueda ABB   =
+	=            Archivo:       TreeBB.hpp                                                      =
+	=            Autor:         Adrián Epifanio Rodríguez Hernández                             =
+	=            Fecha:         05/05/2020                                                      =
+	=            Asignatura:    Algoritmos y Estructuras de Datos Avazados                      =
+	=            Lenguaje:      C++                                                             =
+	=            Correo:        alu0101158280@ull.edu.es                                        =
+	=            Lugar:         Universidad De La Laguna                                        =
+	=                           Escuela Superior de Ingeniería y Tecnología                     =
+	=                                                                                           =
+======================================================================================================
+=====================================================================================================*/
+/*----------  DECLARACION DE FUNCIONES  ----------*/
+
 #pragma once
 #include "Queue.hpp"
 #include "NodeBB.hpp"
+#include "Counter.hpp"
+
+/*------------------------------------------------*/
 
 template <class T>
 class TreeBB {
@@ -15,15 +35,15 @@ class TreeBB {
 		~TreeBB(void);
 
 		// Getter & Setter
-		NodeBB<T>* get_Root(void) const;
+		NodeBB<T>* get_Root(void);
 
 		void set_Root(NodeBB<T>* root);
 
 		// Functions
-		NodeBB<T>* search(T data);
-		NodeBB<T>* searchBranch(NodeBB<T>* node, T data);
-		void insert(T data);
-		void insertBranch(NodeBB<T>*& node, T data);
+		NodeBB<T>* search(T data, Counter& counter);
+		NodeBB<T>* searchBranch(NodeBB<T>* node, T data, Counter& counter);
+		void insert(T data, Counter& counter);
+		void insertBranch(NodeBB<T>*& node, T data, Counter& counter);
 		void remove(T data);
 		void removeBranch(NodeBB<T>*& node, T data);
 		void prune(NodeBB<T>*& node);
@@ -63,7 +83,7 @@ TreeBB<T>::TreeBB(NodeBB<T>* root) {
   */
 template <class T>
 TreeBB<T>::~TreeBB(void) {
-	prune(get_Root());
+	prune(root_);
 }
 
 /**
@@ -74,7 +94,7 @@ TreeBB<T>::~TreeBB(void) {
  * @return     The root.
  */
 template <class T>
-NodeBB<T>* TreeBB<T>::get_Root(void) const {
+NodeBB<T>* TreeBB<T>::get_Root(void) {
 	return root_;
 }
 
@@ -93,15 +113,16 @@ void TreeBB<T>::set_Root(NodeBB<T>* root) {
 /**
  * @brief      Searches for the first match.
  *
- * @param[in]  data  The data
+ * @param[in]  data     The data
+ * @param      counter  The counter
  *
- * @tparam     T     The data type.
+ * @tparam     T        The data type.
  *
  * @return     The node with the given data
  */
 template <class T>
-NodeBB<T>* TreeBB<T>::search(T data) {
-	NodeBB<T>* node = searchBranch(root_, data);
+NodeBB<T>* TreeBB<T>::search(T data, Counter& counter) {
+	NodeBB<T>* node = searchBranch(root_, data, counter);
 	return node;
 
 }
@@ -109,15 +130,17 @@ NodeBB<T>* TreeBB<T>::search(T data) {
 /**
  * @brief      Searchs a node in the given branch.
  *
- * @param      node  The node
- * @param[in]  data  The data
+ * @param      node     The node
+ * @param[in]  data     The data
+ * @param      counter  The counter
  *
- * @tparam     T     The data type.
+ * @tparam     T        The data type.
  *
  * @return     The node with the given data
  */
 template <class T>
-NodeBB<T>* TreeBB<T>::searchBranch(NodeBB<T>* node, T data) {
+NodeBB<T>* TreeBB<T>::searchBranch(NodeBB<T>* node, T data, Counter& counter) {
+	counter.incrementation();
 	if (node == NULL) {
 		return NULL;
 	}
@@ -125,44 +148,47 @@ NodeBB<T>* TreeBB<T>::searchBranch(NodeBB<T>* node, T data) {
 		return node;
 	}
 	else if (data < node -> get_Data()) {
-		return searchBranch(node -> get_Left(), data);
+		return searchBranch(node -> get_Left(), data, counter);
 	}
 	else if (data > node -> get_Data()) {
-		return searchBranch(node -> get_Right(), data);
+		return searchBranch(node -> get_Right(), data, counter);
 	}
 }
 
 /**
  * @brief      Inserts a node.
  *
- * @param[in]  data  The data
+ * @param[in]  data     The data
+ * @param      counter  The counter
  *
- * @tparam     T     The data type.
+ * @tparam     T        The data type.
  */
 template <class T>
-void TreeBB<T>::insert(T data) {
-	insertBranch(root_, data);
+void TreeBB<T>::insert(T data, Counter& counter) {
+	insertBranch(root_, data, counter);
 }
 
 /**
  * @brief      Inserts a node in the given branch.
  *
- * @param      node  The node
- * @param[in]  data  The data
+ * @param      node     The node
+ * @param[in]  data     The data
+ * @param      counter  The counter
  *
- * @tparam     T     The data type.
+ * @tparam     T        The data type.
  */
 template <class T>
-void TreeBB<T>::insertBranch(NodeBB<T>*& node, T data) {
+void TreeBB<T>::insertBranch(NodeBB<T>*& node, T data, Counter& counter) {
+	counter.incrementation();
 	if (node == NULL) {
 		node = new NodeBB<T>(data);
 	}
 	else {
 		if (data < node -> get_Data()) {
-			insertBranch(node -> get_Left(), data);
+			insertBranch(node -> get_Left(), data, counter);
 		}
 		else if (data > node -> get_Data()) {
-			insertBranch(node -> get_Right(), data);
+			insertBranch(node -> get_Right(), data, counter);
 		}
 	}
 }
@@ -262,7 +288,7 @@ void TreeBB<T>::write(void) const {
 	int level = 0;
 	int currentLevel = 0;
 	queue.insert(root_, level);
-	std::cout << "Empty Tree" << std::endl << "Level 0: " << std::endl;
+	std::cout << std::endl << std::endl << "----- TREE -----" << std::endl << "Level 0: ";
 	while (queue.isEmpty() != true) {
 		queue.extract(node, level);
 		if (level > currentLevel) {

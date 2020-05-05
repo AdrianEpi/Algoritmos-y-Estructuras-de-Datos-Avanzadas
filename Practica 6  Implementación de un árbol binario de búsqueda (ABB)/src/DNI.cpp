@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 17:41:42
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-05-05 15:10:56
+* @Last Modified time: 2020-05-05 18:17:46
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -91,7 +91,7 @@ unsigned DNI::operator% (unsigned number) {
  *
  * @return     The result of the equality
  */
-bool DNI::operator== (DNI& dni) const {
+bool DNI::operator== (const DNI& dni) const {
 	if (get_Code() == dni.get_Code())
 		return true;
 	return false;
@@ -181,7 +181,7 @@ DNI& DNI::operator= (DNI& dni) {
  *
  * @return     The result of the equality
  */
-bool DNI::operator== (int code) const {
+bool DNI::operator== (const int& code) const {
 	if (get_Code() == code)
 		return true;
 	return false;

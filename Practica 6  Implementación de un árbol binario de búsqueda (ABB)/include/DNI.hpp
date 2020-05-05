@@ -44,13 +44,13 @@ class DNI {
 		
 		// Operators Overload
 		unsigned operator % (unsigned n);
-		bool operator== (DNI& number) const;
+		bool operator== (const DNI& number) const;
 		bool operator<= (DNI& dni) const;
 		bool operator>= (DNI& dni) const;
 		bool operator< (DNI& dni) const;
 		bool operator> (DNI& dni) const;
 		bool operator!= (DNI& dni) const;
-		bool operator== (int number) const;
+		bool operator== (const int& number) const;
 		DNI& operator= (DNI& dni);
 		operator unsigned long ();
 		
