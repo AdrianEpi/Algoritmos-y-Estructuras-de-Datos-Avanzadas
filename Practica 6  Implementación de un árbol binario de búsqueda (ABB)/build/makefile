@@ -1,6 +1,7 @@
 #Variable objetos
 OBJECTS = main.o  DNI.o Counter.o
-TEMPLATES = ../include/NodeBB.hpp ../include/Queue.hpp
+TEMPLATES = ../include/NodeBB.hpp ../include/Queue.hpp ../include/TreeBB.hpp
+
 #Flags de compilacion
 CFLAGS = -c -std=c++17
 

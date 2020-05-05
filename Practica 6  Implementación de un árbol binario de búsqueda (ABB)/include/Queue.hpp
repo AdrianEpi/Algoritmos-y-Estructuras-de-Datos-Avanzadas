@@ -1,4 +1,4 @@
-
+#pragma once
 #include "NodeBB.hpp"
 #include <cstdio>
 #include <vector>
@@ -14,22 +14,22 @@ class Queue	{
 
 	public:
 		// Builder & Destroyer
-		Queue(void);
-		~Queue(void);
+		Queue (void);
+		~Queue (void);
 
 		// Getters & Setters
-		int get_Size(void) const;
-		std::vector<NodeBB<T>> get_Levels(void) const;
-		std::vector<NodeBB<T>> get_Nodes(void) const;
+		int get_Size (void) const;
+		std::vector<NodeBB<T>> get_Levels (void) const;
+		std::vector<NodeBB<T>> get_Nodes (void) const;
 
-		void set_Size(int size);
-		void set_Levels(std::vector<NodeBB<T>> levels);
-		void set_Nodes(std::vector<NodeBB<T>> nodes);
+		void set_Size (int size);
+		void set_Levels (std::vector<NodeBB<T>> levels);
+		void set_Nodes (std::vector<NodeBB<T>> nodes);
 
 		// Functinos
-		void insert(NodeBB<T>* node, int level);
-		void extract(NodeBB<T>*& node, int& level);
-		bool isEmpty(void);
+		void insert (NodeBB<T>* node, int level);
+		void extract (NodeBB<T>*& node, int& level);
+		bool isEmpty (void);
 };
 
 /**
@@ -38,7 +38,7 @@ class Queue	{
  * @tparam     T     The data type
   */
 template <class T>
-Queue<T>::Queue(void) {
+Queue<T>::Queue (void) {
 	set_Size(0);
 	levels_.clear();
 	nodes_.clear();
@@ -50,7 +50,7 @@ Queue<T>::Queue(void) {
  * @tparam     T     The data type
   */
 template <class T>
-Queue<T>::~Queue(void) {
+Queue<T>::~Queue (void) {
 	levels_.clear();
 	nodes_.clear();
 }
@@ -63,7 +63,7 @@ Queue<T>::~Queue(void) {
  * @return     The size.
  */
 template <class T>
-int Queue<T>::get_Size(void) const {
+int Queue<T>::get_Size (void) const {
 	return size_;
 }
 
@@ -75,7 +75,7 @@ int Queue<T>::get_Size(void) const {
  * @return     The levels.
  */
 template <class T>
-std::vector<NodeBB<T>> Queue<T>::get_Levels(void) const {
+std::vector<NodeBB<T>> Queue<T>::get_Levels (void) const {
 	return levels_;
 }
 
@@ -87,7 +87,7 @@ std::vector<NodeBB<T>> Queue<T>::get_Levels(void) const {
  * @return     The nodes.
  */
 template <class T>
-std::vector<NodeBB<T>> Queue<T>::get_Nodes(void) const {
+std::vector<NodeBB<T>> Queue<T>::get_Nodes (void) const {
 	return nodes_;
 }
 
@@ -99,7 +99,7 @@ std::vector<NodeBB<T>> Queue<T>::get_Nodes(void) const {
  * @tparam     T     The data type.
  */
 template <class T>
-void Queue<T>::set_Size(int size) {
+void Queue<T>::set_Size (int size) {
 	size_ = size;
 }
 
@@ -111,7 +111,7 @@ void Queue<T>::set_Size(int size) {
  * @tparam     T       The data type.
  */
 template <class T>
-void Queue<T>::set_Levels(std::vector<NodeBB<T>> levels) {
+void Queue<T>::set_Levels (std::vector<NodeBB<T>> levels) {
 	levels_ = levels;
 }
 
@@ -123,7 +123,7 @@ void Queue<T>::set_Levels(std::vector<NodeBB<T>> levels) {
  * @tparam     T      The data type.
  */
 template <class T>
-void Queue<T>::set_Nodes(std::vector<NodeBB<T>> nodes) {
+void Queue<T>::set_Nodes (std::vector<NodeBB<T>> nodes) {
 	nodes_ = nodes;
 }
 
@@ -136,7 +136,7 @@ void Queue<T>::set_Nodes(std::vector<NodeBB<T>> nodes) {
  * @tparam     T      The data type.
  */
 template <class T>
-void Queue<T>::insert(NodeBB<T>* node, int level) {
+void Queue<T>::insert (NodeBB<T>* node, int level) {
 	nodes_.push_back(node);
 	levels_.push_back(level);
 	size_++;
@@ -151,7 +151,7 @@ void Queue<T>::insert(NodeBB<T>* node, int level) {
  * @tparam     T      The data type.
  */
 template <class T>
-void Queue<T>::extract(NodeBB<T>*& node, int& level) {
+void Queue<T>::extract (NodeBB<T>*& node, int& level) {
 	assert(size_ >= 1);
 	node = nodes_[0];
 	level = levels_[0];
@@ -168,7 +168,7 @@ void Queue<T>::extract(NodeBB<T>*& node, int& level) {
  * @return     True if empty, False otherwise.
  */
 template <class T>
-bool Queue<T>::isEmpty(void) {
+bool Queue<T>::isEmpty (void) {
 	if (get_Size() >= 1) {
 		return false;
 	}
