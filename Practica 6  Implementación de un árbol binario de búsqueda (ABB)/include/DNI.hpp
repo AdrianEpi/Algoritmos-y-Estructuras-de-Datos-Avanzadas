@@ -47,6 +47,8 @@ class DNI {
 		bool operator== (DNI& number) const;
 		bool operator<= (DNI& dni) const;
 		bool operator>= (DNI& dni) const;
+		bool operator< (DNI& dni) const;
+		bool operator> (DNI& dni) const;
 		bool operator!= (DNI& dni) const;
 		bool operator== (int number) const;
 		DNI& operator= (DNI& dni);

@@ -1,9 +1,10 @@
 #Variable objetos
 OBJECTS = main.o  DNI.o Counter.o
+TEMPLATES = ../include/NodeBB.hpp ../include/Queue.hpp
 #Flags de compilacion
 CFLAGS = -c -std=c++17
 
-ordenacion: $(OBJECTS) $(METHODS)
+ordenacion: $(OBJECTS) $(TEMPLATES)
 	g++  $(OBJECTS) -o ordenacion
 	mv *.o ../objects
 	mv ordenacion ../bin

@@ -16,8 +16,8 @@
 /*
 * @Author: Adrián Epifanio
 * @Date:   2020-03-30 17:41:42
-* @Last Modified by:   Adrián Epifanio
-* @Last Modified time: 2020-04-21 18:03:29
+* @Last Modified by:   Adrian Epifanio
+* @Last Modified time: 2020-05-05 15:10:56
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -124,6 +124,32 @@ bool DNI::operator>= (DNI& dni) const {
 }
 
 /**
+ * @brief      Less-than comparison operator.
+ *
+ * @param      dni   The dni
+ *
+ * @return     The result of the less-than-or-equal comparison
+ */
+bool DNI::operator< (DNI& dni) const {
+	if (get_Code() < dni.get_Code())
+		return true;
+	return false;
+}
+
+/**
+ * @brief      Greater-than comparison operator.
+ *
+ * @param      dni   The dni
+ *
+ * @return     The result of the greater-than-or-equal comparison
+ */
+bool DNI::operator> (DNI& dni) const {
+	if (get_Code() > dni.get_Code())
+		return true;
+	return false;
+}
+
+/**
  * @brief      Inequality operator.
  *
  * @param      dni   The dni
@@ -161,7 +187,7 @@ bool DNI::operator== (int code) const {
 	return false;
 }
 /**
- * @brief      USnsigned long operator.
+ * @brief      Unsigned long operator.
  *
  * @return     The result of the assignment
  */
