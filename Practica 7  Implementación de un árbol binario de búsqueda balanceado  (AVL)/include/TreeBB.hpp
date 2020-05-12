@@ -26,7 +26,7 @@
 template <class T>
 class TreeBB {
 
-	private:
+	protected:
 		NodeBB<T>* root_;
 
 	public:
@@ -43,12 +43,12 @@ class TreeBB {
 		// Functions
 		NodeBB<T>* search(T data, Counter& counter);
 		NodeBB<T>* searchBranch(NodeBB<T>* node, T data, Counter& counter);
-		virtual void insert(T data, Counter& counter);
-		virtual void insertBranch(NodeBB<T>*& node, T data, Counter& counter);
-		virtual void remove(T data);
-		virtual void removeBranch(NodeBB<T>*& node, T data);
+		void insert(T data, Counter& counter);
+		void insertBranch(NodeBB<T>*& node, T data, Counter& counter);
+		void remove(T data);
+		void removeBranch(NodeBB<T>*& node, T data);
 		void prune(NodeBB<T>*& node);
-		virtual void raise(NodeBB<T>*& toRemove, NodeBB<T>*& toRaise);
+		void raise(NodeBB<T>*& toRemove, NodeBB<T>*& toRaise);
 
 		// Write
 		//

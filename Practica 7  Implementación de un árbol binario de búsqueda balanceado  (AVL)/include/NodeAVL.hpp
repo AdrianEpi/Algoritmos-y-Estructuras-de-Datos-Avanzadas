@@ -61,9 +61,9 @@ NodeAVL<T>::NodeAVL (void) {
  */
 template <class T>
 NodeAVL<T>::NodeAVL (const T data, NodeAVL<T>* left, NodeAVL<T>* right) {
-	set_Left(left);
-	set_Right(right);
-	set_Data(data);
+	NodeBB<T>::set_Left(left);
+	NodeBB<T>::set_Right(right);
+	NodeBB<T>::set_Data(data);
 }
 
 /**

@@ -17,7 +17,7 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-05-05 13:37:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-05-12 16:36:12
+* @Last Modified time: 2020-05-12 20:34:16
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
@@ -41,7 +41,7 @@ int main(void){
 		switch (option) {
 			case 1: {
 				system("clear");
-				TreeBB<DNI> tree_;
+				TreeAVL<DNI> tree_;
 				tree_.write();
 				int option2 = -1;
 				while (option2 != 0) {
@@ -88,7 +88,7 @@ int main(void){
 				int n;
 				int nTests;
 				std::vector<DNI> testBench_;
-				TreeBB<DNI> tree_;
+				TreeAVL<DNI> tree_;
 
 				std::cout << std::endl << "\t\tStatistic Mode";
 				std::cout << std::endl << "\tIntroduce the size of the tree ";

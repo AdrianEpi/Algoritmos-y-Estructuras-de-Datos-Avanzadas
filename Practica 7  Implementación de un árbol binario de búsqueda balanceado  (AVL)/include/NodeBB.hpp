@@ -29,10 +29,11 @@
 template <class T>
 class NodeBB {
 
-	private:
+	protected:
 		T data_;
 		NodeBB* left_;
 		NodeBB* right_;
+		int balanceFactor_;
 
 	public:
 		// Builders & Destroyer
@@ -44,10 +45,12 @@ class NodeBB {
 		T get_Data (void);
 		NodeBB*& get_Left (void);
 		NodeBB*& get_Right (void);
+		int get_BalanceFactor (void);
 
 		void set_Data (T data);
 		void set_Left (NodeBB* left);
 		void set_Right (NodeBB* right);
+		void set_BalanceFactor (int balanceFactor);
 
 		// Write
 		void write(void) const;
@@ -172,6 +175,30 @@ void NodeBB<T>::set_Left (NodeBB* left) {
 template <class T>
 void NodeBB<T>::set_Right (NodeBB* right) {
 	right_ = right;
+}
+
+/**
+ * @brief      Gets the balance factor.
+ *
+ * @tparam     T     The data type.
+ *
+ * @return     The balance factor.
+ */
+template <class T>
+int NodeBB<T>::get_BalanceFactor (void) {
+	return balanceFactor_;
+}
+
+/**
+ * @brief      Sets the balance factor.
+ *
+ * @param[in]  balanceFactor  The balance factor
+ *
+ * @tparam     T              The data type.
+ */
+template <class T>
+void NodeBB<T>::set_BalanceFactor (int balanceFactor) {
+	balanceFactor_ = balanceFactor;
 }
 
 /**
