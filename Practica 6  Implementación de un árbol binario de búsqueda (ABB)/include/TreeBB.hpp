@@ -48,9 +48,32 @@ class TreeBB {
 		void removeBranch(NodeBB<T>*& node, T data);
 		void prune(NodeBB<T>*& node);
 		void raise(NodeBB<T>*& toRemove, NodeBB<T>*& toRaise);
+		const bool Equilibrado() {
+			return EquilibrioRama(root_);
+		}
+		const bool EquilibrioRama(NodeBB<T>* node) {
+			if (node == NULL) {
+				return true;
+			}
+			int eq1 = TamRama(node->get_Left());
+			int eq2 = TamRama(node->get_Right());
+			int eq = eq1 - eq2;
+			switch (eq) {
+				case -1:
+				case 0:
+				case 1:
+				return EquilibrioRama(node->get_Left()) &&
+				EquilibrioRama(node->get_Right());
+				default: return false;
+			}
+		}
+		const int TamRama(NodeBB<T>* node) {
+			if (node == NULL) return 0 ;
+			return (1 + TamRama(node->get_Left()) +
+			TamRama(node->get_Right()) );
+		}
 
 		// Write
-		//
 		void write(void) const;
 };
 

@@ -5,10 +5,10 @@ TEMPLATES = ../include/NodeBB.hpp ../include/Queue.hpp ../include/TreeBB.hpp
 #Flags de compilacion
 CFLAGS = -c -std=c++17
 
-ordenacion: $(OBJECTS) $(TEMPLATES)
-	g++  $(OBJECTS) -o ordenacion
+ABB: $(OBJECTS) $(TEMPLATES)
+	g++  $(OBJECTS) -o ABB
 	mv *.o ../objects
-	mv ordenacion ../bin
+	mv ABB ../bin
 
 main.o: ../src/main.cpp 
 	g++ $(CFLAGS) ../src/main.cpp
@@ -26,6 +26,6 @@ clean:
 	rm -rf ../bin/*
 
 run:
-	../bin/ordenacion
+	../bin/ABB
 
 
