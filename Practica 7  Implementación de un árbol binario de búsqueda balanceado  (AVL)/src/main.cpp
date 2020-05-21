@@ -17,13 +17,12 @@
 * @Author: Adrián Epifanio
 * @Date:   2020-05-05 13:37:55
 * @Last Modified by:   Adrian Epifanio
-* @Last Modified time: 2020-05-12 20:34:16
+* @Last Modified time: 2020-05-12 20:59:13
 */
 /*----------  DECLARACION DE FUNCIONES  ----------*/
 
 #include "../include/Counter.hpp"
 #include "../include/DNI.hpp"
-#include "../include/TreeBB.hpp"
 #include "../include/TreeAVL.hpp"
 
 /*------------------------------------------------*/
@@ -133,8 +132,8 @@ int main(void){
 				// Printing Results
 				std::cout << std::endl << "\t\t Compartions Number" << std::endl;
 				std::cout << std::endl << "\t\t Number of elements: " << n;
-				std::cout << std::endl << "\t\t Numbrt of tests: " << nTests << std::endl;
-				std::cout << std::endl << std::setw(25) << "Minimum" << std::setw(10) << "Medium" << std::setw(10) << "Meximum" << std::endl;
+				std::cout << std::endl << "\t\t Number of tests: " << nTests << std::endl;
+				std::cout << std::endl << std::setw(25) << "Minimum" << std::setw(10) << "Medium" << std::setw(10) << "Maximum" << std::endl;
 				std::cout << std::endl << std::setw(15) << "Busqueda" << std::setw(10) << searchCounter.get_Min() << std::setw(10) << searchCounter.get_Accum() / nTests << std::setw(10) << searchCounter.get_Max() << std::endl;
                 std::cout << std::endl << std::setw(15) << "Insercion" << std::setw(10) << insertCounter.get_Min() << std::setw(10) << insertCounter.get_Accum() / nTests << std::setw(10) << insertCounter.get_Max() << std::endl << std::endl << std::endl;
                 exit(0);

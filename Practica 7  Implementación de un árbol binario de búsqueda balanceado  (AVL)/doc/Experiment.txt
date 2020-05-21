@@ -1,212 +1,51 @@
------ TREE -----
-Level 0: [.]
+Number of elements: 50
+Number of tests: 10
 
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 50
+							Minimum    Medium   Maximum
+
+ Busqueda         6         6         8
+Insercion         5         6         8
 
 
 
------ TREE -----
-Level 0: [50]
-Level 1: [.][.]
 
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-40
+Number of elements: 500
+Number of tests: 100
 
+							Minimum    Medium   Maximum
 
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 40
+ Busqueda         9        10        12
+Insercion         8        10        12
 
 
 
------ TREE -----
-Level 0: [50]
-Level 1: [40][.]
-Level 2: [.][.]
 
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 60
+Number of elements: 1000
+Number of tests: 500
+
+							Minimum    Medium   Maximum
+
+ Busqueda         9        11        13
+Insercion         7        11        13
 
 
 
------ TREE -----
-Level 0: [50]
-Level 1: [40][60]
-Level 2: [.][.][.][.]
 
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 30
+umber of elements: 10000
+Number of tests: 5000
+
+							Minimum    Medium   Maximum
+
+ Busqueda        12        14        17
+Insercion        11        14        17
 
 
 
------ TREE -----
-Level 0: [50]
-Level 1: [40][60]
-Level 2: [30][.][.][.]
-Level 3: [.][.]
 
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 70
+Number of elements: 50000
+Number of tests: 10000
 
+							Minimum    Medium   Maximum
 
-
------ TREE -----
-Level 0: [50]
-Level 1: [40][60]
-Level 2: [30][.][.][70]
-Level 3: [.][.][.][.]
-
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 55
-
-
-
------ TREE -----
-Level 0: [50]
-Level 1: [40][60]
-Level 2: [30][.][55][70]
-Level 3: [.][.][.][.][.][.]
-
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 45
-
-
-
------ TREE -----
-Level 0: [50]
-Level 1: [40][60]
-Level 2: [30][45][55][70]
-Level 3: [.][.][.][.][.][.][.][.]
-
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 21
-
-
-
------ TREE -----
-Level 0: [50]
-Level 1: [40][60]
-Level 2: [30][45][55][70]
-Level 3: [21][.][.][.][.][.][.][.]
-Level 4: [.][.]
-
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 34
-
-
-
------ TREE -----
-Level 0: [50]
-Level 1: [40][60]
-Level 2: [30][45][55][70]
-Level 3: [21][34][.][.][.][.][.][.]
-Level 4: [.][.][.][.]
-
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 150
-
-
-
------ TREE -----
-Level 0: [50]
-Level 1: [40][60]
-Level 2: [30][45][55][70]
-Level 3: [21][34][.][.][.][.][.][150]
-Level 4: [.][.][.][.][.][.]
-
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 200
-
-Rotation Right to Right
-
-
-
------ TREE -----
-Level 0: [50]
-Level 1: [40][60]
-Level 2: [30][45][55][150]
-Level 3: [21][34][.][.][.][.][70][200]
-Level 4: [.][.][.][.][.][.][.][.]
-
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 300
-
-Rotation Right to Right
-
-
-
------ TREE -----
-Level 0: [50]
-Level 1: [40][150]
-Level 2: [30][45][60][200]
-Level 3: [21][34][.][.][55][70][.][300]
-Level 4: [.][.][.][.][.][.][.][.][.][.]
-
-                Choose an option:
-        1. Insert
-        2. Delete
-        0. Exit
-1
-Introduce the code to insert: 1
-
-Rotation Left to Left
-
-
-
------ TREE -----
-Level 0: [50]
-Level 1: [30][150]
-Level 2: [21][40][60][200]
-Level 3: [1][.][34][45][55][70][.][300]
-Level 4: [.][.][.][.][.][.][.][.][.][.][.][.]
+ Busqueda        11        16        20
+Insercion        12        16        20

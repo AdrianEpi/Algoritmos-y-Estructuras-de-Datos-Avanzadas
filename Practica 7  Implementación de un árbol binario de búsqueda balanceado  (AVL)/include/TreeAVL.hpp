@@ -114,7 +114,7 @@ void TreeAVL<T>::insertBalancing (NodeBB<T>*& node, NodeBB<T>*& newNode, bool& g
 	}
 	else {
 		if (newNode -> get_Data() == node -> get_Data()) {
-			std::cout << "Data already inserted" << std::endl; 
+			//std::cout << "Data already inserted" << std::endl; 
 		}
 		else if (newNode -> get_Data() < node -> get_Data()) {
 			insertBalancing(node -> get_Left(), newNode, grow, counter);
@@ -210,7 +210,7 @@ void TreeAVL<T>::insertReBalancingLeft (NodeBB<T>*& node, bool& grow) {
  */
 template <class T>
 void TreeAVL<T>::rotateLeftToLeft (NodeBB<T>*& node) {
-	std::cout << std::endl << "Rotation Left to Left" << std::endl;
+	//std::cout << std::endl << "Rotation Left to Left" << std::endl;
 	NodeBB<T>* newNode = node -> get_Left();
 	node -> set_Left(newNode -> get_Right());
 	newNode -> set_Right(node);
@@ -235,7 +235,7 @@ void TreeAVL<T>::rotateLeftToLeft (NodeBB<T>*& node) {
  */
 template <class T>
 void TreeAVL<T>::rotateRightToRight (NodeBB<T>*& node) {
-	std::cout << std::endl << "Rotation Right to Right" << std::endl;
+	//std::cout << std::endl << "Rotation Right to Right" << std::endl;
 	NodeBB<T>* newNode = node -> get_Right();
 	node -> set_Right(newNode -> get_Left());
 	newNode -> set_Left(node);
@@ -259,7 +259,7 @@ void TreeAVL<T>::rotateRightToRight (NodeBB<T>*& node) {
  */
 template <class T>
 void TreeAVL<T>::rotateLeftToRight (NodeBB<T>*& node) {
-	std::cout << std::endl << "Rotation Left to Right" << std::endl;
+	//std::cout << std::endl << "Rotation Left to Right" << std::endl;
 	NodeBB<T>* newNodeA = node -> get_Left();
 	NodeBB<T>* newNodeB = newNodeA -> get_Right();
 	node -> set_Left(newNodeB -> get_Right());
@@ -291,7 +291,7 @@ void TreeAVL<T>::rotateLeftToRight (NodeBB<T>*& node) {
  */
 template <class T>
 void TreeAVL<T>::rotateRightToLeft (NodeBB<T>*& node) {
-	std::cout << std::endl << "Rotation Right to Left" << std::endl;
+	//std::cout << std::endl << "Rotation Right to Left" << std::endl;
 	NodeBB<T>* newNodeA = node -> get_Right();
 	NodeBB<T>* newNodeB = newNodeA -> get_Left();
 	node -> set_Right(newNodeB -> get_Left());
@@ -332,7 +332,7 @@ void TreeAVL<T>::remove (T data) {
 template <class T>
 void TreeAVL<T>::remove (NodeBB<T>*& node, T data, bool& decreasses) {
 	if(!node) {
-		std::cout << std::endl << "The node you're trying to remove is in AVL" << std::endl;
+		//std::cout << std::endl << "The node you're trying to remove is in AVL" << std::endl;
 		return;
 	}
 
